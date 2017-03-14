@@ -185,7 +185,7 @@ public class statements extends javax.swing.JFrame {
                 jd.setQuery(nq);
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
-                JasperViewer.viewReport(jp);
+                JasperViewer.viewReport(jp,false);
         }
         catch (JRException ex) {
             Logger.getLogger(statements.class.getName()).log(Level.SEVERE, null, ex);
@@ -206,7 +206,7 @@ public class statements extends javax.swing.JFrame {
                 jd.setQuery(nq);
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
-                JasperViewer.viewReport(jp);
+                JasperViewer.viewReport(jp,false);
                     
                 } catch (JRException ex) {
                     Logger.getLogger(statements.class.getName()).log(Level.SEVERE, null, ex);

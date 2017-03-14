@@ -415,13 +415,45 @@ public class ClientDetails extends javax.swing.JFrame {
         }
          else if(!id.getText().isEmpty()){
              try{
-                 String check ="SELECT COUNT(*) AS total FROM client_detail  where id = '"+id.getText()+"'"; 
+                 String check ="SELECT COUNT(*) AS total,name FROM client_detail  where id = '"+id.getText()+"' GROUP BY name"; 
                         pst=conn.prepareStatement(check);
                         rs = pst.executeQuery();
                         while(rs.next()){
                   if(rs.getInt("total")>0)
                         {
-                          JOptionPane.showMessageDialog(null, "ID "+id.getText()+ " "+"already exist");
+                            String nm =rs.getString("name");
+                          JOptionPane.showMessageDialog(null, nm+ " "+"already exist");
+                          
+                          String property = Combo_property.getSelectedItem().toString();
+            switch (property) {
+                case "Land":
+                  
+                    new land().setVisible(true);
+                    land.id.setText(id.getText().toUpperCase().trim());
+                    land.cname.setText(name.getText().toUpperCase().trim());
+                    land.id.setEnabled(false);
+                    land.cname.setEnabled(false);
+                     close();
+                    break;
+                case "House":
+                    new house().setVisible(true);
+                    house.id.setText(id.getText().toUpperCase().trim());
+                    house.cname.setText(name.getText().toUpperCase().trim());
+                    house.id.setEnabled(false);
+                    house.cname.setEnabled(false);
+                      close();
+                      break;
+                case "GZD":
+                  new GakuyoZeroDeposit().setVisible(true);
+                   GakuyoZeroDeposit.id.setText(id.getText().toUpperCase().trim());
+                   GakuyoZeroDeposit.cname.setText(name.getText().toUpperCase().trim());
+                   GakuyoZeroDeposit.id.setEnabled(false);
+                   GakuyoZeroDeposit.cname.setEnabled(false);
+                    close();
+                    break;
+                    default:
+                    break;
+            }
                         }
            else {
              

@@ -83,22 +83,40 @@ int nextVal = seq.incrementAndGet();
         
 
         try {
-            String searchld = "select * from land where land.id=? ";
+            String searchld = "select *from land where land.id='"+id.getText()+"'";
 
             pst = conn.prepareStatement(searchld );
-            pst.setString(1, id.getText());
             rs = pst.executeQuery();
 
             if (rs.next()) {
                   String d =rs.getString("discount");
                 location.setSelectedItem(rs.getString("location"));
                 cost.setText(rs.getString("cost"));
-                plotno.setSelectedItem(rs.getString("plot_no"));
+                plotno.removeAll();
+               String pt = rs.getString("plot_no");
+               JOptionPane.showMessageDialog(null,pt);
+               // plotno.setSelectedItem(rs.getString("plot_no"));
                 size.setSelectedItem(rs.getString("size"));
                 location.setEnabled(true);
                 discount.setEnabled(false);
                 cost.setEnabled(false);
-                
+                /**
+                 * 
+                 *  String n ="NO";
+            //plot number
+            String ppt =location.getSelectedItem().toString();
+            String ptn = "select DISTINCT plot_no from land where land.id='"+id.getText()+"' and plot_no!='"+n+"' and location= '["+ppt+"]'";
+
+            pst = conn.prepareStatement(ptn );
+            rs = pst.executeQuery();
+            
+            while (rs.next()) {
+                plotno.removeAll();
+                String lctn = rs.getString("plot_no");
+                plotno.addItem(lctn);
+            
+            }
+                 */
                 size.setEnabled(false);
                 if("0".equals(d)){
                 disc.setSelectedItem("NO");
@@ -130,9 +148,9 @@ int nextVal = seq.incrementAndGet();
        if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
-       else{
+       else if(!"NO".equals(sbyplotno.getText())){
         try {
-            String searchld = "select client_detail.name,land.location,land.cost,land.plot_no,land.size from client_detail,land "
+            String searchld = "select land.id,client_detail.name,land.location,land.cost,land.plot_no,land.size from client_detail,land "
                     + "where land.id=client_detail.id and land.plot_no=? and land.location='"+location1.getSelectedItem()+"' ";
 
             pst = conn.prepareStatement(searchld );
@@ -141,10 +159,10 @@ int nextVal = seq.incrementAndGet();
 
             if (rs.next()) {
                 plotno.removeAllItems();
-                plotno.addItem(sbyplotno.getText().toString());
+                plotno.addItem(sbyplotno.getText());
                 location.setSelectedItem(rs.getString("location"));
                 cost.setText(rs.getString("cost"));
-               
+                id.setText(rs.getString("id"));
                 size.setSelectedItem(rs.getString("size"));
                 location.setEnabled(true);
                 cost.setEnabled(false);
@@ -161,6 +179,9 @@ int nextVal = seq.incrementAndGet();
             JOptionPane.showMessageDialog(null, e);
         }
  
+       }
+       else{
+       JOptionPane.showMessageDialog(null, "Enter correct plot number");
        }
     }
 
@@ -261,7 +282,7 @@ int nextVal = seq.incrementAndGet();
                   String ptn =(String) plotno.getSelectedItem();//data
                   String v ="null";
                   
-                  String pt = "update plotnos  set "+ptl+"="+v+"  where "+ptl+"="+ptn+"";
+                  String pt = "update plotnos  set ["+ptl+"]="+v+"  where ["+ptl+"]="+ptn+"";
                   pst = conn.prepareStatement(pt);
                   pst.execute();
                  
@@ -856,6 +877,8 @@ int nextVal = seq.incrementAndGet();
                     String Payment_mode=pmode.getSelectedItem().toString();
                     String Amount=amount.getText();
                     String Amountw=String.valueOf(amntw);
+                    String Pt=plotno.getSelectedItem().toString();
+                    String Parcel=location.getSelectedItem().toString();
                     String sg = ".............";
                     String Deposited="..................";
                     String servedby=" ";
@@ -865,9 +888,9 @@ int nextVal = seq.incrementAndGet();
                     Style style = doc.addStyle("Tahoma", null);
                     StyleConstants.setFontSize(style, 12);
                     jtp.setPage(getClass().getResource("logo.html"));
-                    jtp.getStyledDocument().insertString(1, ttl+"\nBranch"+" "+branch+" . "+ " "+"Date Of Posting"+" "+td+  " . "+ " "+"Transaction Date"+"  "+transactionDate+". "+" "+"\nClient Name\t\t\t\t"+name+
-                            "\nReceiptNo\t\t\t\t"+receiptno+"\nSize Of Land\t\t\t\t"
-                            +Size_of_land+"\nType Of Payment\t\t\t"+Deposit_Type+"\nMode Of Payment\t\t\t"+Payment_mode+"\nAmount\t\t\t\t"+Amount+ "\nAmount in Words:"+Amountw+"\nDepositedBy:"+Deposited+""
+                    jtp.getStyledDocument().insertString(1, ttl+"\nBranch"+" "+branch+" . "+ " "+"Date Of Posting"+" "+td+  " . "
+                            + " "+"Transaction Date"+" " + " "+transactionDate+". "+" "+"\nClient Name\t\t\t\t"+name+ "\n"+ Parcel+"\t\tReceiptNo"+receiptno+"\nSize\t\t"
+                            +Size_of_land+"\t\tPlotNO"+Pt+"\nType Of Payment\t\t\t"+Deposit_Type+"\nMode Of Payment\t\t\t"+Payment_mode+"\nAmount\t\t\t\t"+Amount+ "\nAmount in Words:"+Amountw+"\nDepositedBy:"+Deposited+""
                                     + "Client Signature:"+sg+"Served by"+servedby+""+uname+"\n\t\t Where Trust Meets Your Vision",style);
                 
                      //save in receipt table
@@ -941,6 +964,8 @@ int nextVal = seq.incrementAndGet();
                     String Payment_mode=pmode.getSelectedItem().toString();
                     String Amount=amount.getText();
                     String Amountw=String.valueOf(amntw);
+                    String Pt=plotno.getSelectedItem().toString();
+                    String Parcel=location.getSelectedItem().toString();
                     String sg = ".............";
                     String Deposited="..................";
                     String servedby=" ";
@@ -950,9 +975,9 @@ int nextVal = seq.incrementAndGet();
                     Style style = doc.addStyle("Tahoma", null);
                     StyleConstants.setFontSize(style, 11);
                     jtp.setPage(getClass().getResource("logo.html"));
-                    jtp.getStyledDocument().insertString(1, ttl+"\nBranch"+" "+branch+" . "+ " "+"Date Of Posting"+" "+td+  " . "+ " "+"Transaction Date"+"  "+transactionDate+". "+" "+"\nClient Name\t\t\t\t"+name+
-                            "\nReceiptNo\t\t\t\t"+receiptno+"\nSize Of Land\t\t\t\t"
-                            +Size_of_land+"\nType Of Payment\t\t\t"+Deposit_Type+"\nMode Of Payment\t\t\t"+Payment_mode+"\nAmount\t\t\t\t"+Amount+ "\nAmount in Words:"+Amountw+"\nDepositedBy:"+Deposited+""
+                    jtp.getStyledDocument().insertString(1, ttl+"\nBranch"+" "+branch+" . "+ " "+"Date Of Posting"+" "+td+  " . "+ " "+"Transaction Date"+"  "+transactionDate+". "+" "
+                            + ""+"\nClient Name\t\t\t\t"+name+"\n"+ Parcel+"\t\tReceiptNo"+receiptno+"\nSize Of Land\t\t"
+                            +Size_of_land+"\t\tPlotNo"+Pt+"\nType Of Payment\t\t\t"+Deposit_Type+"\nMode Of Payment\t\t\t"+Payment_mode+"\nAmount\t\t\t\t"+Amount+ "\nAmount in Words:"+Amountw+"\nDepositedBy:"+Deposited+""
                                     + "Client Signature:"+sg+"Served by"+servedby+""+uname+"\n\t\t Where Trust Meets Your Vision",style);
                 
                      //save in receipt table
