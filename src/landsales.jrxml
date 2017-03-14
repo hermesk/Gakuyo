@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6398dafd-0548-46f4-a45d-17d1f0d3fac2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT 
+sum(land.amount) as Land,land.location ,land.ptype,land.pdate
+FROM
+land
+GROUP BY 
+land.location,land.pdate,land.ptype]]>
+	</queryString>
+	<field name="Land" class="java.lang.Integer"/>
+	<field name="location" class="java.lang.String"/>
+	<field name="ptype" class="java.lang.String"/>
+	<field name="pdate" class="java.sql.Date"/>
+	<group name="location">
+		<groupExpression><![CDATA[$F{location}]]></groupExpression>
+		<groupHeader>
+			<band height="36">
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement style="SubTitle" x="0" y="13" width="100" height="20" uuid="e3ecd11c-e4e7-4680-be7e-731bae5095d9"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pdate}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="SubTitle" x="130" y="13" width="120" height="20" uuid="49f41077-8bf0-4fc7-a094-93fd22678d95"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{location}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="pdate">
+		<groupExpression><![CDATA[$F{pdate}]]></groupExpression>
+		<groupHeader>
+			<band height="16"/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="119" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="189" y="97" width="174" height="22" uuid="3ae641f9-f616-48ee-b684-c96f7fd57277"/>
+				<text><![CDATA[LAND SALES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="28" y="15" width="485" height="82" uuid="ae8cf113-db16-49b5-8c2c-9e10c37ad3df"/>
+				<imageExpression><![CDATA["C:\\Users\\Hp\\Documents\\NetBeansProjects\\Gakuyo\\src\\images\\coffee.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="251ba855-a5b5-4c14-814b-8ce58bff1183"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="100" height="15" uuid="b9693e6a-02d0-4456-8709-940a2f1172d2"/>
+				<text><![CDATA[Land]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="277" y="19" width="103" height="15" uuid="f5353368-c1d7-4c68-835e-aae1eeb5d7c1"/>
+				<text><![CDATA[ptype]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="e8ae489b-bc2f-4efa-82ec-3ac7ee068b9a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="100" height="15" uuid="6bab7fdf-c934-4866-bcaf-a573f5df9f7a"/>
+				<textFieldExpression><![CDATA[$F{Land}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="277" y="0" width="63" height="15" uuid="f08374ce-0a54-4ed1-826c-69adbad83fe3"/>
+				<textFieldExpression><![CDATA[$F{ptype}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="df38fb78-c722-4eaf-94d1-3b5e05a6ffbc"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="28ef9705-a47c-44b4-9ecf-d1da2f5fda6e"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="ff3568b3-46b8-4e7b-b5c3-3ec933449cd7"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="43818596-5ea7-41c8-aeb7-2ce245ee8979"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

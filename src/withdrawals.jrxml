@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="efd21a53-26b6-496a-9e89-2aebc12499b6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT*FROM property_withdrawals]]>
+	</queryString>
+	<field name="id" class="java.lang.String"/>
+	<field name="property_location" class="java.lang.String"/>
+	<field name="property_cost" class="java.lang.Integer"/>
+	<field name="amount_payed" class="java.lang.Integer"/>
+	<field name="amount_withdrawn" class="java.lang.Double"/>
+	<field name="penalty_fee" class="java.lang.Double"/>
+	<field name="amount_received" class="java.lang.Double"/>
+	<field name="servedby" class="java.lang.String"/>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+		<groupHeader>
+			<band height="37">
+				<frame>
+					<reportElement mode="Opaque" x="-21" y="7" width="597" height="24" forecolor="#B89F7D" backcolor="#F2EBDF" uuid="31afa36e-b926-4a20-8adf-764d6c5cf700"/>
+					<textField>
+						<reportElement style="SubTitle" x="68" y="0" width="413" height="24" forecolor="#736343" uuid="a5a7064d-24af-485b-b114-82531b756303"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="0" width="100" height="20" uuid="4badc8c9-b201-4269-a205-47715881077f"/>
+						<text><![CDATA[ID]]></text>
+					</staticText>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement x="36" y="-12" width="494" height="94" uuid="4d51441e-78c3-42f0-801d-0377946604c9"/>
+				<imageExpression><![CDATA["coffee.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="SubTitle" x="99" y="82" width="334" height="22" uuid="1d26e941-ff57-4932-9a6a-c12c68470a1a"/>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[PROPERTY WITHDRAWAL REPORTS]]></text>
+			</staticText>
+			<image>
+				<reportElement x="433" y="-115" width="267" height="209" uuid="ca286748-caa6-4999-80ca-b1cd93138589"/>
+				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="6c9b2bc0-79bc-4ae9-8b2d-69257a3f4bd2"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="79" height="15" forecolor="#736343" uuid="ad8fcbf8-d8f9-44bc-bc39-028f7f98360d"/>
+				<text><![CDATA[location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="79" y="0" width="79" height="15" forecolor="#736343" uuid="f052d67d-f366-445a-9d71-fe15283545f9"/>
+				<text><![CDATA[cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="119" y="1" width="79" height="15" forecolor="#736343" uuid="0dffcda0-c0b0-456a-a34d-029e9780fb66"/>
+				<text><![CDATA[amount paid]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="216" y="0" width="79" height="15" forecolor="#736343" uuid="af4ac53f-3cb1-4977-977d-16c9616fc4b5"/>
+				<text><![CDATA[withdrawn]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="305" y="0" width="79" height="15" forecolor="#736343" uuid="ca231969-caf4-4759-9299-248f24d2becb"/>
+				<text><![CDATA[penalty_fee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="395" y="0" width="79" height="15" forecolor="#736343" uuid="f90b9fb7-86a3-4a08-a972-52c91fd18fc5"/>
+				<text><![CDATA[ payable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="474" y="0" width="79" height="15" forecolor="#736343" uuid="5903c0be-3e3f-4eb3-ba48-f58b0fab3443"/>
+				<text><![CDATA[servedby]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="4a055b9b-551b-409b-8017-595686c9abaf"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="79" height="15" uuid="d45c73e1-b8b3-4abd-b781-c3695f9281fb"/>
+					<textFieldExpression><![CDATA[$F{property_location}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="79" y="0" width="79" height="15" uuid="5fcfa1f3-6877-4ab2-a8c0-b6ad34db31e9"/>
+					<textFieldExpression><![CDATA[$F{property_cost}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="158" y="0" width="79" height="15" uuid="193fd827-8dad-44db-8fed-693a655de72e"/>
+					<textFieldExpression><![CDATA[$F{amount_payed}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="237" y="0" width="79" height="15" uuid="8156b911-9ad0-4138-bbab-56ccb65855f5"/>
+					<textFieldExpression><![CDATA[$F{amount_withdrawn}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="316" y="0" width="79" height="15" uuid="043d77ea-6ac8-4b13-b85c-0eba5f21f02a"/>
+					<textFieldExpression><![CDATA[$F{penalty_fee}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="395" y="0" width="79" height="15" uuid="b48cad18-58bf-4cfd-bff2-8e99394e56f6"/>
+					<textFieldExpression><![CDATA[$F{amount_received}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="474" y="0" width="79" height="15" uuid="c2b9ab8e-c083-4b0e-808b-13db07a79bcc"/>
+					<textFieldExpression><![CDATA[$F{servedby}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="b94b584e-12c6-4e43-afd5-e4cdefef04e2"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="00621bd5-e0af-4a6c-95d2-0ade06407b4e"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="cc947b06-bdec-4c79-9ae1-17ba9980c82e"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="1ebde3fa-2924-45de-bbce-1cea56f2f72f"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="a585eaa5-41d9-4c19-98a0-7b940086f91f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

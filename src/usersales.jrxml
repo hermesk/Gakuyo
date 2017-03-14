@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="17286699-482b-406f-a45b-ffa8894a057c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT
+sum(land.amount) as Land, sum(house.amount) as House,sum(investors_club.amount) as Investors,
+sum(investors.regfee)  as RegFeee,sum(investors.legalfee) as LegalFee
+FROM
+land,house,investors_club,investors]]>
+	</queryString>
+	<field name="Land" class="java.lang.Integer"/>
+	<field name="House" class="java.lang.Integer"/>
+	<field name="Investors" class="java.lang.Double"/>
+	<field name="RegFeee" class="java.lang.Integer"/>
+	<field name="LegalFee" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="116" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="0" y="73" width="553" height="22" forecolor="#000000" uuid="c43a2fe1-83be-4bef-888f-98cd41289949"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[USER TOTAL COLLECTION]]></text>
+			</staticText>
+			<image>
+				<reportElement x="40" y="0" width="485" height="73" uuid="9cc30a14-fde4-4eaf-9cbb-71094f2cb97f"/>
+				<imageExpression><![CDATA["C:\\Users\\Hp\\Documents\\NetBeansProjects\\Gakuyo\\src\\images\\coffee.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="bf21a0e8-6f0b-4e2e-aa28-d4921bbc444d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="4" width="111" height="15" forecolor="#000000" uuid="855bd8f7-1e88-43ab-a8ca-564ec800bf25"/>
+				<text><![CDATA[Land]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="111" y="4" width="111" height="15" forecolor="#000000" uuid="6e43306d-5be8-4131-939e-34c62cdfdf0a"/>
+				<text><![CDATA[House]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="222" y="4" width="111" height="15" forecolor="#000000" uuid="ffce0020-6301-4079-9dc1-59d140e49fdc"/>
+				<text><![CDATA[Investors]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="333" y="4" width="111" height="15" forecolor="#000000" uuid="c0e7a011-72c5-471a-8dfd-3e9476642feb"/>
+				<text><![CDATA[RegFeee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="444" y="4" width="111" height="15" forecolor="#000000" uuid="f7e91153-659a-4dcb-b74f-b31257290491"/>
+				<text><![CDATA[LegalFee]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="6b8907bf-8020-4f9d-bb45-8abc699330a6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="222" y="0" width="111" height="15" uuid="b2dca5ec-a508-4d02-ad62-5ccc2b76c68c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Investors}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="333" y="1" width="111" height="15" uuid="cc26e6a0-9165-4745-b93c-ba94d1703418"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RegFeee}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="444" y="1" width="99" height="15" uuid="719d1900-84d4-4500-b520-05c1b4b63aa8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LegalFee}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="111" y="1" width="96" height="15" uuid="8e6845dd-c2b7-4076-9b95-16605237f696"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{House}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="0" y="1" width="101" height="15" uuid="a0b4b1b2-5bfd-46ba-b5f0-b58b74d9d361"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Land}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="ba8a7283-ae10-4be5-bd69-18a2a661e9d2"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="2f3f62b6-12cc-434f-a593-f18bb6502a4f"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="6d1a3974-9254-4053-bf7a-c641e96b1527"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="7b487149-98b4-4e5c-acf9-a34439b0a1af"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
