@@ -224,6 +224,7 @@ public void receipt(){
                 
                     String nme=name.getText();
                     String lfee=legalfee.getText();
+                    String rfee=regfee.getText();
                     String Payment_mode=payment_mode.getSelectedItem().toString();
                     String Amountw=String.valueOf(amntw);
                     String sg = "...........";
@@ -240,18 +241,16 @@ public void receipt(){
                     jtp.getStyledDocument().insertString(1, ttl+ "\nBranch"+" "+branch+" . "+ " "+"Date Of Posting"+" "+td+
                             " . "+ " "+"Transaction Date"+"  "+td+" ."+" "+"\nClient Name\t\t\t\t"+nme+"\nReceiptNo\t\t\t\t"+
                             ReceiptNo+"\nRegistration fee\t\t\t"
-                            +r+"\nLegal fee\t\t\t\t"+lfee+"\nMode Of Payment\t\t\t"+Payment_mode+"\nPayment Type\t\t\t"+ptype+
+                            +rfee+"\nLegal fee\t\t\t\t"+lfee+"\nMode Of Payment\t\t\t"+Payment_mode+"\nPayment Type\t\t\t"+ptype+
                             "\nAmount in Words:"+Amountw+"\nDepositedBy:"+Deposited+""
                             + "Client Signature:"+sg+"Served by"+servedby+""+uname+"\n\t\t Where Trust Meets Your Vision",null);
                     
               
                 } catch (IOException ex) {
                     
-                } catch (BadLocationException ex) {
+                } catch (BadLocationException | SQLException ex) {
             Logger.getLogger(investor_registration.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-           Logger.getLogger(investor_registration.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        }
      
                  }    
     }

@@ -279,7 +279,7 @@ public class Reports extends javax.swing.JFrame {
                               
                               }
                             else{
-                           JOptionPane.showMessageDialog(null, "No Client in "+" "+location.getSelectedItem()+" ");
+                           JOptionPane.showMessageDialog(null, "No Land Record Found in "+" "+location.getSelectedItem()+" ");
 
                               }
                           
@@ -347,6 +347,14 @@ public class Reports extends javax.swing.JFrame {
         try {
                    String start=((JTextField)sdate.getDateEditor().getUiComponent()).getText().trim();
                    String end=((JTextField)tdate.getDateEditor().getUiComponent()).getText().trim();
+                   
+                   String check ="SELECT COUNT(*) AS total FROM land where (pdate>='"+start+"' and pdate<=('"+end+"'))"; 
+                            pst=conn.prepareStatement(check);
+                            rs = pst.executeQuery();
+                          while(rs.next()){
+                              if(rs.getInt("total")>0){
+                                  
+                    
               //String report = "src\\landrp.jrxml";
               InputStream ljp = getClass().getResourceAsStream("landrpd.jrxml");
              JasperDesign jd = JRXmlLoader.load(ljp);
@@ -363,20 +371,37 @@ public class Reports extends javax.swing.JFrame {
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
                 JasperViewer.viewReport(jp,false);
+                              
+                              }
+                          else{
+                           JOptionPane.showMessageDialog(null, "No Land Record Found ");
+
+                              }
+                          }
+                  
         } catch (JRException ex) {
             Logger.getLogger(investors_payments.class.getName()).log(Level.SEVERE, null, ex);
-        }}
+        }   catch (SQLException ex) {
+                Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
+            }}
           else if (property.getSelectedItem() == "House"){ 
           try {
                    String start=((JTextField)sdate.getDateEditor().getUiComponent()).getText().trim();
                    String end=((JTextField)tdate.getDateEditor().getUiComponent()).getText().trim();
-               // String report = "src\\houserp.jrxml";
+                   
+                    String check ="SELECT COUNT(*) AS total FROM house where (posting_date>='"+start+"' and posting_date<=('"+end+"'))"; 
+                            pst=conn.prepareStatement(check);
+                            rs = pst.executeQuery();
+                          while(rs.next()){
+                              if(rs.getInt("total")>0){
+                              
+                              // String report = "src\\houserp.jrxml";
                InputStream ljp = getClass().getResourceAsStream("houserp.jrxml");
                 JasperDesign jd = JRXmlLoader.load(ljp);
 
                 String sland = "select house.posting_date as 'Pdate',client_detail.name,client_detail.phone,house.id,house.account_debit as 'Acc',house.amount,"
                               + "house.cost,house.refno as 'Refno',house.location,house.payment_mode as 'Mode',house.payment_type as Type,house.plotno,"
-                              + "house.house_size as 'Size',house.balance,house.servedby from house,client_detail "
+                              + "house.house_size as 'Size',house.balance,house.servedby from house,client_detail  where"
                               + "(posting_date>='"+start+"' and posting_date<=('"+end+"')) and client_detail.id=house.id";
 
                 JRDesignQuery nq = new JRDesignQuery();
@@ -386,9 +411,19 @@ public class Reports extends javax.swing.JFrame {
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
                 JasperViewer.viewReport(jp,false);
+                              }
+                        else{
+                           JOptionPane.showMessageDialog(null, "No House Record Found ");
+
+                              }
+                          }
+                   
+               
         } catch (JRException ex) {
             Logger.getLogger(investors_payments.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }   catch (SQLException ex) {
+                Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
+            }
               
               
           }   
