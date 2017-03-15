@@ -3,6 +3,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -376,8 +377,8 @@ public class investors_payments extends javax.swing.JFrame {
       else{
                
         try {
-                //String report = "src\\investors.jrxml";
-                JasperDesign jd = JRXmlLoader.load("src\\investors.jrxml");
+               InputStream ljp = getClass().getResourceAsStream("investors.jrxml");
+                JasperDesign jd = JRXmlLoader.load(ljp);
 
       String sql = "select investors.name as 'Name',investors.id,investors_club.tdate as 'Date',investors_club.amount,investors_club.ptype,investors_club.rate,"
                          + "investors_club.interest,investors_club.govtw,investors_club.payment,investors_club.bank_account as 'bankaccount',investors_club.bank_name as 'bank',investors.bank_branch as 'Branch' "
@@ -407,8 +408,8 @@ public class investors_payments extends javax.swing.JFrame {
                 }
         else{
         try {
-            //String report = "src\\investors.jrxml";
-            JasperDesign jd = JRXmlLoader.load("src\\investors.jrxml");
+            InputStream ljp = getClass().getResourceAsStream("investors.jrxml");
+                JasperDesign jd = JRXmlLoader.load(ljp);
 
             String sql = "select investors.name,investors.id,investors_club.tdate as 'Date',investors_club.amount,investors_club.ptype,"
             + "investors_club.rate,investors_club.interest,investors_club.govtw, investors_club.payment,investors_club.bank_account"
@@ -437,8 +438,8 @@ public class investors_payments extends javax.swing.JFrame {
                 }
         else{
         try {
-            //String report = "src\\investors.jrxml";
-            JasperDesign jd = JRXmlLoader.load("src\\investors.jrxml");
+           InputStream ljp = getClass().getResourceAsStream("investors.jrxml");
+                JasperDesign jd = JRXmlLoader.load(ljp);
 
             String sql = "select investors.name as 'Name',investors.id,investors_club.tdate as 'Date',investors_club.amount,investors_club.ptype,investors_club.rate,"
                      + "investors_club.interest,investors_club.govtw, investors_club.payment,investors_club.bank_account as 'bankaccount',investors_club.bank_name as 'bank',"
@@ -487,9 +488,9 @@ public class investors_payments extends javax.swing.JFrame {
                     while(rs.next()){
                            if(rs.getInt("total")>0){ 
                                
-                     //String report = "src\\investors.jrxml";
-            
-                JasperDesign jd = JRXmlLoader.load("src\\invstor.jrxml");
+                   InputStream ljp = getClass().getResourceAsStream("invstor.jrxml");
+                   JasperDesign jd = JRXmlLoader.load(ljp);
+                
 
                   String sql ="select investors.name as Name, investors.id,investors_club.tdate as Date,investors_club.amount ,"
                           +"investors_club.ptype,investors_club.rate,investors_club.interest,investors_club.govtw," 

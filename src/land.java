@@ -268,7 +268,6 @@ int nextVal = seq.incrementAndGet();
     
  
       public void updateplotno(){
-          
      
       if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");

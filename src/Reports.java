@@ -2,6 +2,7 @@
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,7 +59,7 @@ public class Reports extends javax.swing.JFrame {
         }
         else{
           try{
-         String sql = "select *from property_location";
+         String sql = "select *from property_location where location IS NOT NULL";
          pst = conn.prepareStatement(sql);
          rs =pst.executeQuery();
          while(rs.next()){
@@ -260,7 +261,8 @@ public class Reports extends javax.swing.JFrame {
                               
                               if(rs.getInt("total")>0){
                                  //String report = "src\\landrp.jrxml";
-                         JasperDesign jd = JRXmlLoader.load("src\\landrp.jrxml");
+              InputStream ljp = getClass().getResourceAsStream("landrp.jrxml");
+                    JasperDesign jd = JRXmlLoader.load(ljp);
 
                           String sland = "select land.pdate,client_detail.name,land.id, land.location,land.amount,land.cost,"
                             + "land.size,land.ref_no as 'Refno',"
@@ -298,8 +300,9 @@ public class Reports extends javax.swing.JFrame {
                           while(rs.next()){
                               if(rs.getInt("total")>0){
                                // String report = "src\\houserp.jrxml";
-                JasperDesign jd = JRXmlLoader.load("src\\houserp.jrxml");
-
+                InputStream ljp = getClass().getResourceAsStream("houserp.jrxml");               
+                JasperDesign jd = JRXmlLoader.load(ljp);
+                
                 String sland = "select house.posting_date as 'Pdate',client_detail.name,client_detail.phone,house.id,house.account_debit as 'Acc',house.amount,"
                               + "house.cost,house.refno as 'Refno',house.location,house.payment_mode as 'Mode',house.payment_type as Type,house.plotno,"
                               + "house.house_size as 'Size',house.balance,house.servedby from house,client_detail "
@@ -345,7 +348,8 @@ public class Reports extends javax.swing.JFrame {
                    String start=((JTextField)sdate.getDateEditor().getUiComponent()).getText().trim();
                    String end=((JTextField)tdate.getDateEditor().getUiComponent()).getText().trim();
               //String report = "src\\landrp.jrxml";
-             JasperDesign jd = JRXmlLoader.load("src\\landrpd.jrxml");
+              InputStream ljp = getClass().getResourceAsStream("landrpd.jrxml");
+             JasperDesign jd = JRXmlLoader.load(ljp);
 
        String sland = "select land.pdate,client_detail.name,land.id, land.location,land.amount,land.cost,"
                             + "land.size,land.ref_no as 'Refno',"
@@ -367,7 +371,8 @@ public class Reports extends javax.swing.JFrame {
                    String start=((JTextField)sdate.getDateEditor().getUiComponent()).getText().trim();
                    String end=((JTextField)tdate.getDateEditor().getUiComponent()).getText().trim();
                // String report = "src\\houserp.jrxml";
-                JasperDesign jd = JRXmlLoader.load("src\\houserp.jrxml");
+               InputStream ljp = getClass().getResourceAsStream("houserp.jrxml");
+                JasperDesign jd = JRXmlLoader.load(ljp);
 
                 String sland = "select house.posting_date as 'Pdate',client_detail.name,client_detail.phone,house.id,house.account_debit as 'Acc',house.amount,"
                               + "house.cost,house.refno as 'Refno',house.location,house.payment_mode as 'Mode',house.payment_type as Type,house.plotno,"
