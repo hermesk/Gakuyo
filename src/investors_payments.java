@@ -377,8 +377,14 @@ public class investors_payments extends javax.swing.JFrame {
       else{
                
         try {
+            String check ="SELECT COUNT(*) AS total FROM investors_club where investors_club.id='"+id.getText()+"'"; 
+                            pst=conn.prepareStatement(check);
+                            rs = pst.executeQuery();
+                          while(rs.next()){
+            if(rs.getInt("total")>0){
                InputStream ljp = getClass().getResourceAsStream("investors.jrxml");
                 JasperDesign jd = JRXmlLoader.load(ljp);
+                
 
       String sql = "select investors.name as 'Name',investors.id,investors_club.tdate as 'Date',investors_club.amount,investors_club.ptype,investors_club.rate,"
                          + "investors_club.interest,investors_club.govtw,investors_club.payment,investors_club.bank_account as 'bankaccount',investors_club.bank_name as 'bank',investors.bank_branch as 'Branch' "
@@ -390,8 +396,15 @@ public class investors_payments extends javax.swing.JFrame {
                 
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
-                JasperViewer.viewReport(jp);
-        } catch (JRException ex) {
+                JasperViewer.viewReport(jp,false);
+                id.setText("");
+                              }
+            else{
+            JOptionPane.showMessageDialog(null,"Investor not found" );
+            }        
+                          }
+                
+        } catch (JRException | SQLException ex) {
             Logger.getLogger(investors_payments.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
@@ -408,7 +421,13 @@ public class investors_payments extends javax.swing.JFrame {
                 }
         else{
         try {
-            InputStream ljp = getClass().getResourceAsStream("investors.jrxml");
+            String check ="SELECT COUNT(*) AS total FROM investors_club where bank_name = '"+banks.getSelectedItem()+"' and "
+            + "DATEPART (dd, tdate)>='"+dd1.getText()+"' and DATEPART (dd, tdate)<='"+dd3.getText()+"' "; 
+                            pst=conn.prepareStatement(check);
+                            rs = pst.executeQuery();
+                          while(rs.next()){
+            if(rs.getInt("total")>0){
+             InputStream ljp = getClass().getResourceAsStream("investors.jrxml");
                 JasperDesign jd = JRXmlLoader.load(ljp);
 
             String sql = "select investors.name,investors.id,investors_club.tdate as 'Date',investors_club.amount,investors_club.ptype,"
@@ -422,8 +441,16 @@ public class investors_payments extends javax.swing.JFrame {
 
             JasperReport jr = JasperCompileManager.compileReport(jd);
             JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
-            JasperViewer.viewReport(jp);
-        } catch (JRException ex) {
+            JasperViewer.viewReport(jp,false);
+            dd1.setText("");
+            dd3.setText("");
+            }
+                      else{
+            JOptionPane.showMessageDialog(null,"Investor not found" );
+            }    
+                          }
+           
+        } catch (JRException | SQLException ex) {
             Logger.getLogger(investors_payments.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
@@ -438,7 +465,13 @@ public class investors_payments extends javax.swing.JFrame {
                 }
         else{
         try {
-           InputStream ljp = getClass().getResourceAsStream("investors.jrxml");
+            String check ="SELECT COUNT(*) AS total FROM investors_club"
+                    + " where (DATEPART (dd, tdate)>='"+dd.getText()+"' and DATEPART (dd, tdate)<='"+dd2.getText()+"') "; 
+                            pst=conn.prepareStatement(check);
+                            rs = pst.executeQuery();
+                          while(rs.next()){
+            if(rs.getInt("total")>0){
+             InputStream ljp = getClass().getResourceAsStream("investors.jrxml");
                 JasperDesign jd = JRXmlLoader.load(ljp);
 
             String sql = "select investors.name as 'Name',investors.id,investors_club.tdate as 'Date',investors_club.amount,investors_club.ptype,investors_club.rate,"
@@ -452,8 +485,17 @@ public class investors_payments extends javax.swing.JFrame {
 
             JasperReport jr = JasperCompileManager.compileReport(jd);
             JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
-            JasperViewer.viewReport(jp);
-        } catch (JRException ex) {
+            JasperViewer.viewReport(jp,false);
+            dd.setText("");
+            dd2.setText("");
+            }
+                    else{
+            JOptionPane.showMessageDialog(null,"Investor not found" );
+            }           
+                          
+                          }
+              
+        } catch (JRException | SQLException ex) {
             Logger.getLogger(investors_payments.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
@@ -505,21 +547,19 @@ public class investors_payments extends javax.swing.JFrame {
                  
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
-                JasperViewer.viewReport(jp);
+                JasperViewer.viewReport(jp,false);
+               ((JTextField)sdate.getDateEditor().getUiComponent()).setText("");
+               ((JTextField)tdate.getDateEditor().getUiComponent()).setText("");
                            }
                else{
                   JOptionPane.showMessageDialog(null, "No Investor found between "+ " "+start+" and " +" "+end+"");
 
                               }
                     }  
-                  
-            
         }
-        catch (JRException ex) {
+        catch (JRException | SQLException ex) {
             Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
-        }   catch (SQLException ex) {
-                Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        }
          }
                 
         

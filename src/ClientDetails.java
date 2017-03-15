@@ -453,7 +453,12 @@ public class ClientDetails extends javax.swing.JFrame {
                     break;
                     default:
                     break;
+                    
             }
+            txt_search.setText("");
+            id.setText("");
+            name.setText("");
+            phoneNo.setText("");
                         }
            else {
              
@@ -500,6 +505,10 @@ public class ClientDetails extends javax.swing.JFrame {
                     default:
                     break;
             }
+            txt_search.setText("");
+            id.setText("");
+            name.setText("");
+            phoneNo.setText("");
 }
                         }
                      

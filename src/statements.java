@@ -1,8 +1,10 @@
 
 import java.awt.Toolkit;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -173,9 +175,16 @@ public class statements extends javax.swing.JFrame {
         else{
             if (property.getSelectedItem() == "Land"){       
         try{
-            JasperDesign jd = JRXmlLoader.load("src\\clientlandstatement.jrxml");
-            
-   String sland = "select land.tdate as 'TDate', client_detail.name,land.id,"
+            String check ="SELECT COUNT(*) AS total FROM land where land.id='"+id.getText()+"'"; 
+                            pst=conn.prepareStatement(check);
+                            rs = pst.executeQuery();
+                            
+                          while(rs.next()){
+                              
+                              if(rs.getInt("total")>0){
+                                 InputStream ljp = getClass().getResourceAsStream("clientlandstatement.jrxml");
+                   JasperDesign jd = JRXmlLoader.load(ljp);
+                   String sland = "select land.tdate as 'TDate', client_detail.name,land.id,"
                     + "land.size,land.location,land.pmode as 'Mode',"
                     + "land.ptype as 'Type',land.plot_no as 'PlotNo',land.amount from land,client_detail "
                    + " where land.id='"+id.getText()+"' and client_detail.id='"+id.getText()+"'";
@@ -186,29 +195,55 @@ public class statements extends javax.swing.JFrame {
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
                 JasperViewer.viewReport(jp,false);
+                              }
+                              
+                              else{
+                           JOptionPane.showMessageDialog(null, "No Land Record Found for "+" "+id.getText()+" ");
+
+                              }
+                          }
+         
         }
         catch (JRException ex) {
             Logger.getLogger(statements.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }       catch (SQLException ex) {
+                    Logger.getLogger(statements.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         else if (property.getSelectedItem() == "House"){
-             JasperDesign jd;
                 try {
-                    jd = JRXmlLoader.load("src\\clienthousestatement.jrxml");
-                    
-             String sland = "select house.transaction_date as 'TDate', client_detail.name,house.location,house.id as 'ID',house.house_size as 'Size',"
+                     String check ="SELECT COUNT(*) AS total FROM house where house.id='"+id.getText()+"'"; 
+                            pst=conn.prepareStatement(check);
+                            rs = pst.executeQuery();
+                            
+                          while(rs.next()){
+                              
+                              if(rs.getInt("total")>0){
+                                      
+                         InputStream ljp = getClass().getResourceAsStream("clienthousestatement.jrxml");
+                        JasperDesign jd = JRXmlLoader.load(ljp);
+                     String sland = "select house.transaction_date as 'TDate', client_detail.name,house.location,house.id as 'ID',house.house_size as 'Size',"
                           + "house.payment_mode as 'Mode',house.payment_type as 'Type',house.plotno,house.amount from house,client_detail "
                            + "where house.id='"+id.getText()+"' and client_detail.id='"+id.getText()+"'";
 
           
-                JRDesignQuery nq = new JRDesignQuery();
-                nq.setText(sland);
-                jd.setQuery(nq);
-                JasperReport jr = JasperCompileManager.compileReport(jd);
-                JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
-                JasperViewer.viewReport(jp,false);
+                        JRDesignQuery nq = new JRDesignQuery();
+                        nq.setText(sland);
+                        jd.setQuery(nq);
+                        JasperReport jr = JasperCompileManager.compileReport(jd);
+                        JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
+                        JasperViewer.viewReport(jp,false);
+                              
+                              }
+                            else{
+                           JOptionPane.showMessageDialog(null, "No House Record Found for "+" "+id.getText()+" ");
+
+                              }
+                          }
+                          
+                   
                     
-                } catch (JRException ex) {
+                } catch (JRException | SQLException ex) {
                     Logger.getLogger(statements.class.getName()).log(Level.SEVERE, null, ex);
                 }
         }

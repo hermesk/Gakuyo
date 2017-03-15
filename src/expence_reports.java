@@ -244,6 +244,8 @@ public class expence_reports extends javax.swing.JFrame {
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
                 JasperViewer.viewReport(jp,false);
+                ((JTextField)bfrom.getDateEditor().getUiComponent()).setText("");
+               ((JTextField)bto.getDateEditor().getUiComponent()).setText("");
                               }
                               else{
                                JOptionPane.showMessageDialog(null,"No expense Found");

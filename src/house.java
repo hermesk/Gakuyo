@@ -1118,13 +1118,9 @@ return string;
              }
         }
        
-   }              catch (SQLException ex) {
+   }              catch (SQLException | IOException | BadLocationException ex) {
                       Logger.getLogger(house.class.getName()).log(Level.SEVERE, null, ex);
-                  } catch (IOException ex) {
-                   Logger.getLogger(house.class.getName()).log(Level.SEVERE, null, ex);
-               } catch (BadLocationException ex) {
-                   Logger.getLogger(house.class.getName()).log(Level.SEVERE, null, ex);
-               }
+                  }
   
               }
             }
