@@ -3,6 +3,7 @@ import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.print.PrinterException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -349,65 +350,41 @@ public class expence_reports extends javax.swing.JFrame {
     }//GEN-LAST:event_searchbybranchActionPerformed
 
     private void genActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genActionPerformed
-        // TODO add your handling code here:
-        if(conn==null){
-            JOptionPane.showMessageDialog(null, "Could not connect to the server");
+        if(((JTextField)bfrom.getDateEditor().getUiComponent()).getText().trim().isEmpty()||((JTextField)bto.getDateEditor().getUiComponent()).getText().trim().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "<html><font color='red'>Kindly Fill start date and end date</font></html>");
+        }
+        else if(conn==null){
+            JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
          else{
         try {
-                String report = "src\\expence.jrxml";
-                 String start=((JTextField)bfrom.getDateEditor().getUiComponent()).getText().trim();
+                    
+                String start=((JTextField)bfrom.getDateEditor().getUiComponent()).getText().trim();
                 String end=((JTextField)bto.getDateEditor().getUiComponent()).getText().trim();
-                JasperDesign jd = JRXmlLoader.load("src\\expence.jrxml");
+                
+                InputStream ljp = getClass().getResourceAsStream("expence.jrxml");
+                JasperDesign jd = JRXmlLoader.load(ljp);
+                
+                String xp="SELECT date_of_payment as 'Date',Payee_name as 'Payee',description ,amount, payment_mode as 'Mode',servedby as 'Servedby' from"
+                        + " payment_voucher where (date_of_payment>='"+start+"' and date_of_payment<=('"+end+"'))";
 
-     String srecpt="select payment_mode,servedby,description,amount,payee_name from payment_voucher where(date_of_payment>'"+start+"'and date_of_payment<=('"+end+"'))";
-  //String srecpt = "select payment_mode as 'ModeOfPayment',servedby as 'ServedBy',"
-                               // + "description as 'Description',amount as 'Amount',Payee_name as 'NameOfPayee'  "
-                               // + "from payment_voucher where (date_of_payment>='"+start+"' and date_of_payment<=('"+end+"'))";
-                JRDesignQuery nq = new JRDesignQuery();
-                nq.setText(srecpt);
+                 JRDesignQuery nq = new JRDesignQuery();
+                nq.setText(xp);
                 jd.setQuery(nq);
              
-                JasperReport jr = JasperCompileManager.compileReport(srecpt);
+                JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
-                JasperViewer.viewReport(jp);
+                JasperViewer.viewReport(jp,false);
         } catch (JRException ex) {
             Logger.getLogger(investors_payments.class.getName()).log(Level.SEVERE, null, ex);
         }}
     }//GEN-LAST:event_genActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(expence_reports.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(expence_reports.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(expence_reports.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(expence_reports.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new expence_reports().setVisible(true);
-            }
+       
+        java.awt.EventQueue.invokeLater(() -> {
+            new expence_reports().setVisible(true);
         });
     }
 

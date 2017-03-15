@@ -415,13 +415,13 @@ public class ClientDetails extends javax.swing.JFrame {
         }
          else if(!id.getText().isEmpty()){
              try{
-                 String check ="SELECT COUNT(*) AS total,name FROM client_detail  where id = '"+id.getText()+"' GROUP BY name"; 
+                 String check ="SELECT COUNT(*) AS total FROM client_detail  where id = '"+id.getText()+"'"; 
                         pst=conn.prepareStatement(check);
                         rs = pst.executeQuery();
                         while(rs.next()){
                   if(rs.getInt("total")>0)
                         {
-                            String nm =rs.getString("name");
+                            String nm =id.getText();
                           JOptionPane.showMessageDialog(null, nm+ " "+"already exist");
                           
                           String property = Combo_property.getSelectedItem().toString();
@@ -516,8 +516,7 @@ public class ClientDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_nameActionPerformed
 
     private void phoneNoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneNoFocusGained
-        // TODO add your handling code here:
-        phoneNo.setText("");
+      
     }//GEN-LAST:event_phoneNoFocusGained
 
     private void phoneNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNoActionPerformed
@@ -562,7 +561,7 @@ public class ClientDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_idKeyTyped
 
     private void txt_searchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchFocusGained
-        txt_search.setText("");
+
     }//GEN-LAST:event_txt_searchFocusGained
 
     private void cmd_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_searchActionPerformed
