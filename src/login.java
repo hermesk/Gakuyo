@@ -3,7 +3,6 @@
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -12,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class login extends javax.swing.JFrame {
@@ -51,23 +49,7 @@ public class login extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
 
         jLabel4.setBackground(new java.awt.Color(0, 102, 51));
@@ -170,12 +152,10 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyPressed
-conn = DbConnect.connecrDb();
         if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
              if (txt_user.getText().trim().isEmpty() || txt_password.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "<html>Fill all fields!</html>");
         }
-   
             else if(conn==null){
             JOptionPane.showMessageDialog(null, "Could not connect to the server");
         }
@@ -233,16 +213,11 @@ conn = DbConnect.connecrDb();
             } catch (HeadlessException | SQLException ex) {
 
             }
-             finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+   
         }}
     }//GEN-LAST:event_txt_passwordKeyPressed
 
     private void cmd_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_loginActionPerformed
-conn = DbConnect.connecrDb();
         if (txt_user.getText().trim().isEmpty() || txt_password.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "<html>Fill all fields!</html>");
         }
@@ -303,11 +278,7 @@ conn = DbConnect.connecrDb();
             } catch (HeadlessException | SQLException ex) {
 
             }
-                   finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); } catch (SQLException e) {}
-}
+ 
         }
     }//GEN-LAST:event_cmd_loginActionPerformed
 

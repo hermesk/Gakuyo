@@ -275,13 +275,13 @@ return string;
         getdetailt = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         pwd = new javax.swing.JPasswordField();
-        transaction_date = new com.toedter.calendar.JDateChooser();
         cname = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         Amount_invested = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         paymnt = new javax.swing.JFormattedTextField();
         govtw = new javax.swing.JFormattedTextField();
+        transaction_date = new com.toedter.calendar.JDateChooser();
         print = new javax.swing.JButton();
         rctpn = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -438,8 +438,6 @@ return string;
 
         jLabel19.setText("Payment");
 
-        transaction_date.setDateFormatString(" yyyy-MM-dd");
-
         cname.setEditable(false);
         cname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cname.setText("CLIENT NAME");
@@ -458,6 +456,8 @@ return string;
         paymnt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
 
         govtw.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+
+        transaction_date.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -520,11 +520,12 @@ return string;
                                             .addComponent(payment_mode, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(accounts, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(transaction_date, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(ptype, 0, 146, Short.MAX_VALUE)
-                                                    .addComponent(paymnt)
-                                                    .addComponent(govtw))
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(ptype, 0, 146, Short.MAX_VALUE)
+                                                        .addComponent(paymnt)
+                                                        .addComponent(govtw))
+                                                    .addComponent(transaction_date, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(0, 0, Short.MAX_VALUE)))))
                                 .addGap(27, 27, 27))
                             .addGroup(jPanel2Layout.createSequentialGroup()

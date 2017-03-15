@@ -33,9 +33,6 @@ WHERE land.id=client_detail.id]]>
 	<variable name="ttmnt" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
 	</variable>
-	<variable name="subtotal" class="java.lang.Double" resetType="Group" resetGroup="id" calculation="Sum">
-		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
-	</variable>
 	<group name="id">
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
 		<groupHeader>
@@ -48,7 +45,7 @@ WHERE land.id=client_detail.id]]>
 					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="SubTitle" x="116" y="13" width="269" height="20" forecolor="#000000" uuid="f5bf9243-0602-455f-a6de-9cc382a11344"/>
+					<reportElement style="SubTitle" x="116" y="13" width="103" height="20" forecolor="#000000" uuid="f5bf9243-0602-455f-a6de-9cc382a11344"/>
 					<textElement>
 						<font size="16" isBold="true"/>
 					</textElement>
@@ -57,7 +54,7 @@ WHERE land.id=client_detail.id]]>
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="27">
+			<band height="25">
 				<staticText>
 					<reportElement x="16" y="5" width="51" height="20" uuid="5908bc80-2cbb-4558-afc1-e2c3501bc348"/>
 					<textElement>
@@ -70,7 +67,7 @@ WHERE land.id=client_detail.id]]>
 					<textElement>
 						<font size="12" isBold="true" isUnderline="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{subtotal}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{ttmnt}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>

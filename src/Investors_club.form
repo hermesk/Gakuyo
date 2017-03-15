@@ -179,11 +179,13 @@
                                               <Component id="payment_mode" alignment="0" max="32767" attributes="0"/>
                                               <Component id="accounts" alignment="0" max="32767" attributes="0"/>
                                               <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="transaction_date" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                                                      <Component id="ptype" alignment="0" pref="146" max="32767" attributes="0"/>
-                                                      <Component id="paymnt" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="govtw" max="32767" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="ptype" alignment="0" pref="146" max="32767" attributes="0"/>
+                                                          <Component id="paymnt" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="govtw" max="32767" attributes="0"/>
+                                                      </Group>
+                                                      <Component id="transaction_date" min="-2" pref="137" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               </Group>
@@ -472,11 +474,6 @@
         </Component>
         <Component class="javax.swing.JPasswordField" name="pwd">
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="transaction_date">
-          <Properties>
-            <Property name="dateFormatString" type="java.lang.String" value=" yyyy-MM-dd"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="cname">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
@@ -519,6 +516,11 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
               <Format subtype="0" type="0"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="transaction_date">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
           </Properties>
         </Component>
       </SubComponents>

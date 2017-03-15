@@ -774,8 +774,7 @@ public void receipt(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void nameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameFocusGained
-        // TODO add your handling code here:
-        name.setText("");
+     
     }//GEN-LAST:event_nameFocusGained
 
     private void nameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameFocusLost
