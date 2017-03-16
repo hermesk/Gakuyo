@@ -397,7 +397,6 @@ public class investors_payments extends javax.swing.JFrame {
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
                 JasperViewer.viewReport(jp,false);
-                id.setText("");
                               }
             else{
             JOptionPane.showMessageDialog(null,"Investor not found" );
@@ -409,7 +408,7 @@ public class investors_payments extends javax.swing.JFrame {
         }
                 
       }
-        
+        id.setText("");
     }//GEN-LAST:event_genrpActionPerformed
 
     private void genprtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genprtActionPerformed
@@ -442,8 +441,7 @@ public class investors_payments extends javax.swing.JFrame {
             JasperReport jr = JasperCompileManager.compileReport(jd);
             JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
             JasperViewer.viewReport(jp,false);
-            dd1.setText("");
-            dd3.setText("");
+            
             }
                       else{
             JOptionPane.showMessageDialog(null,"Investor not found" );
@@ -454,6 +452,8 @@ public class investors_payments extends javax.swing.JFrame {
             Logger.getLogger(investors_payments.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
+            dd1.setText("");
+            dd3.setText("");
     }//GEN-LAST:event_genprtActionPerformed
 
     private void genpdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genpdActionPerformed
@@ -486,8 +486,7 @@ public class investors_payments extends javax.swing.JFrame {
             JasperReport jr = JasperCompileManager.compileReport(jd);
             JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
             JasperViewer.viewReport(jp,false);
-            dd.setText("");
-            dd2.setText("");
+            
             }
                     else{
             JOptionPane.showMessageDialog(null,"Investor not found" );
@@ -499,6 +498,8 @@ public class investors_payments extends javax.swing.JFrame {
             Logger.getLogger(investors_payments.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
+             dd.setText("");
+            dd2.setText("");
     }//GEN-LAST:event_genpdActionPerformed
 
     private void invrpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invrpActionPerformed
@@ -548,8 +549,7 @@ public class investors_payments extends javax.swing.JFrame {
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
                 JasperViewer.viewReport(jp,false);
-               ((JTextField)sdate.getDateEditor().getUiComponent()).setText("");
-               ((JTextField)tdate.getDateEditor().getUiComponent()).setText("");
+              
                            }
                else{
                   JOptionPane.showMessageDialog(null, "No Investor found between "+ " "+start+" and " +" "+end+"");
@@ -561,7 +561,8 @@ public class investors_payments extends javax.swing.JFrame {
             Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
         }
          }
-                
+            ((JTextField)sdate.getDateEditor().getUiComponent()).setText("");
+               ((JTextField)tdate.getDateEditor().getUiComponent()).setText("");       
         
         
     }//GEN-LAST:event_invrpActionPerformed

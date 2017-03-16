@@ -195,7 +195,6 @@ public class statements extends javax.swing.JFrame {
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
                 JasperViewer.viewReport(jp,false);
-                id.setText("");
                               }
                               
                               else{
@@ -203,6 +202,7 @@ public class statements extends javax.swing.JFrame {
 
                               }
                           }
+                          id.setText("");
          
         }
         catch ( JRException | SQLException ex) {
@@ -238,6 +238,8 @@ public class statements extends javax.swing.JFrame {
                            JOptionPane.showMessageDialog(null, "No House Record Found for "+" "+id.getText()+" ");
 
                               }
+                                              id.setText("");
+
                           }
                           
                    

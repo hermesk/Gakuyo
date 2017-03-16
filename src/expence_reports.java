@@ -244,8 +244,7 @@ public class expence_reports extends javax.swing.JFrame {
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
                 JasperViewer.viewReport(jp,false);
-                ((JTextField)bfrom.getDateEditor().getUiComponent()).setText("");
-               ((JTextField)bto.getDateEditor().getUiComponent()).setText("");
+               
                               }
                               else{
                                JOptionPane.showMessageDialog(null,"No expense Found");
@@ -258,6 +257,8 @@ public class expence_reports extends javax.swing.JFrame {
         }   catch (SQLException ex) {
                 Logger.getLogger(expence_reports.class.getName()).log(Level.SEVERE, null, ex);
             }}
+              ((JTextField)bfrom.getDateEditor().getUiComponent()).setText("");
+               ((JTextField)bto.getDateEditor().getUiComponent()).setText("");
     }//GEN-LAST:event_genActionPerformed
 
     public static void main(String args[]) {
