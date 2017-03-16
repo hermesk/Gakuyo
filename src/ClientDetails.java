@@ -455,10 +455,7 @@ public class ClientDetails extends javax.swing.JFrame {
                     break;
                     
             }
-            txt_search.setText("");
-            id.setText("");
-            name.setText("");
-            phoneNo.setText("");
+           
                         }
            else {
              
@@ -505,16 +502,17 @@ public class ClientDetails extends javax.swing.JFrame {
                     default:
                     break;
             }
-            txt_search.setText("");
-            id.setText("");
-            name.setText("");
-            phoneNo.setText("");
+           
 }
                         }
                      
              }   catch (SQLException ex) {
                      Logger.getLogger(ClientDetails.class.getName()).log(Level.SEVERE, null, ex);
                  }
+            txt_search.setText("");
+            id.setText("");
+            name.setText("");
+            phoneNo.setText("");
              
              }
       
