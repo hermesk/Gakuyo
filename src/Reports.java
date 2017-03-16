@@ -411,6 +411,9 @@ public class Reports extends javax.swing.JFrame {
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
                 JasperViewer.viewReport(jp,false);
+                ((JTextField)sdate.getDateEditor().getUiComponent()).setText("");
+               ((JTextField)tdate.getDateEditor().getUiComponent()).setText("");
+                
                               }
                         else{
                            JOptionPane.showMessageDialog(null, "No House Record Found ");

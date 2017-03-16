@@ -195,6 +195,7 @@ public class statements extends javax.swing.JFrame {
                 JasperReport jr = JasperCompileManager.compileReport(jd);
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
                 JasperViewer.viewReport(jp,false);
+                id.setText("");
                               }
                               
                               else{
@@ -204,11 +205,9 @@ public class statements extends javax.swing.JFrame {
                           }
          
         }
-        catch (JRException ex) {
+        catch ( JRException | SQLException ex) {
             Logger.getLogger(statements.class.getName()).log(Level.SEVERE, null, ex);
-        }       catch (SQLException ex) {
-                    Logger.getLogger(statements.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        }
             }
         else if (property.getSelectedItem() == "House"){
                 try {
