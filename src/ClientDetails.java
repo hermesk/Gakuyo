@@ -443,16 +443,7 @@ public class ClientDetails extends javax.swing.JFrame {
                     house.cname.setEnabled(false);
                       close();
                       break;
-                case "GZD":
-                  new GakuyoZeroDeposit().setVisible(true);
-                   GakuyoZeroDeposit.id.setText(id.getText().toUpperCase().trim());
-                   GakuyoZeroDeposit.cname.setText(name.getText().toUpperCase().trim());
-                   GakuyoZeroDeposit.id.setEnabled(false);
-                   GakuyoZeroDeposit.cname.setEnabled(false);
-                    close();
-                    break;
-                    default:
-                    break;
+               
                     
             }
            
@@ -491,14 +482,7 @@ public class ClientDetails extends javax.swing.JFrame {
                     house.cname.setEnabled(false);
                       close();
                       break;
-                case "GZD":
-                  new GakuyoZeroDeposit().setVisible(true);
-                   GakuyoZeroDeposit.id.setText(id.getText().toUpperCase().trim());
-                   GakuyoZeroDeposit.cname.setText(name.getText().toUpperCase().trim());
-                   GakuyoZeroDeposit.id.setEnabled(false);
-                   GakuyoZeroDeposit.cname.setEnabled(false);
-                    close();
-                    break;
+               
                     default:
                     break;
             }

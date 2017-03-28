@@ -538,7 +538,7 @@ public void dreceipt(){
                    
             close();
                 } catch (PrinterException ex) {
-                    Logger.getLogger(GakuyoZeroDeposit.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(payment_voucher.class.getName()).log(Level.SEVERE, null, ex);
                 }
 }  
     }//GEN-LAST:event_jButton1ActionPerformed

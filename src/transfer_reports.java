@@ -390,7 +390,7 @@ public double getSum(){
         try{
         transfer_table.print(JTable.PrintMode.NORMAL,header,footer);
         } catch (PrinterException ex) {
-            Logger.getLogger(Edit_Gakuyozerodeposit.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(transfer_reports.class.getName()).log(Level.SEVERE, null, ex);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

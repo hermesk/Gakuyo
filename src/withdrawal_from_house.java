@@ -154,7 +154,7 @@ public class withdrawal_from_house extends javax.swing.JFrame {
                        + "Client Signature:\t "+sg+"Served by  "+servedby+""+name+"\n\n\t\t\t Where Trust Meets Your Vision",null);
              
                 } catch (IOException | BadLocationException ex) {
-                    Logger.getLogger(GakuyoZeroDeposit.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(withdrawal_from_house.class.getName()).log(Level.SEVERE, null, ex);
                 } 
                                    finally {
     try { rs.close(); } catch (SQLException e) {  }
@@ -834,7 +834,7 @@ return string;
                     pst.execute();
               
                 } catch (SQLException ex) {
-                    Logger.getLogger(GakuyoZeroDeposit.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(withdrawal_from_house.class.getName()).log(Level.SEVERE, null, ex);
                 }
                                         finally {
     try { rs.close(); } catch (SQLException e) {  }

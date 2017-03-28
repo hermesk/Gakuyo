@@ -61,14 +61,12 @@ public class MainGakuyo extends javax.swing.JFrame {
         Credit = new javax.swing.JMenu();
         land_menu = new javax.swing.JMenuItem();
         house_menu = new javax.swing.JMenuItem();
-        gakuyo_menu = new javax.swing.JMenuItem();
         investors = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         reversal = new javax.swing.JMenuItem();
         withdrawals = new javax.swing.JMenu();
         transfers = new javax.swing.JMenuItem();
         inv_clubwithdrwls = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         l_withdrwals = new javax.swing.JMenuItem();
         house_withdrawals = new javax.swing.JMenuItem();
         payment_voucher_section = new javax.swing.JMenu();
@@ -78,7 +76,6 @@ public class MainGakuyo extends javax.swing.JFrame {
         edit_investorsclub = new javax.swing.JMenuItem();
         edit_landdetails = new javax.swing.JMenuItem();
         edit_housedetails = new javax.swing.JMenuItem();
-        edit_gzd = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         update_user_accounts = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -290,17 +287,6 @@ public class MainGakuyo extends javax.swing.JFrame {
         });
         Credit.add(house_menu);
 
-        gakuyo_menu.setText("GAKUYO ZERO DEPOSIT SECTION");
-        gakuyo_menu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                gakuyo_menuMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                gakuyo_menuMousePressed(evt);
-            }
-        });
-        Credit.add(gakuyo_menu);
-
         investors.setText("INVESTORS CLUB PAYMENT SECTION");
         investors.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -356,14 +342,6 @@ public class MainGakuyo extends javax.swing.JFrame {
             }
         });
         withdrawals.add(inv_clubwithdrwls);
-
-        jMenuItem2.setText("GAKUYO ZERO DEPOSIT WITHDRAWALS");
-        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem2MousePressed(evt);
-            }
-        });
-        withdrawals.add(jMenuItem2);
 
         l_withdrwals.setText("LAND WITHDRAWALS");
         l_withdrwals.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -459,17 +437,6 @@ public class MainGakuyo extends javax.swing.JFrame {
             }
         });
         backoffice_setup.add(edit_housedetails);
-
-        edit_gzd.setText("EDIT GAKUYO ZERO DEPOSIT DETAILS");
-        edit_gzd.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                edit_gzdMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                edit_gzdMousePressed(evt);
-            }
-        });
-        backoffice_setup.add(edit_gzd);
 
         jMenuItem1.setText("EDIT PAYMENT VOUCHER DETAILS");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -567,11 +534,6 @@ public class MainGakuyo extends javax.swing.JFrame {
       edithouse.getObj().setVisible(true);
     }//GEN-LAST:event_edit_housedetailsMouseClicked
 
-    private void edit_gzdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit_gzdMouseClicked
-       
-        
-    }//GEN-LAST:event_edit_gzdMouseClicked
-
     private void log_outMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_log_outMousePressed
        
     }//GEN-LAST:event_log_outMousePressed
@@ -606,19 +568,6 @@ public class MainGakuyo extends javax.swing.JFrame {
         edithouse.getObj().setVisible(true);
        
     }//GEN-LAST:event_edit_housedetailsMousePressed
-
-    private void edit_gzdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit_gzdMousePressed
-        Edit_Gakuyozerodeposit.getObj().setVisible(true);
-    }//GEN-LAST:event_edit_gzdMousePressed
-
-    private void gakuyo_menuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gakuyo_menuMousePressed
-        GakuyoZeroDeposit.getObj().setVisible(true);
-        
-    }//GEN-LAST:event_gakuyo_menuMousePressed
-
-    private void gakuyo_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gakuyo_menuMouseClicked
-       GakuyoZeroDeposit.getObj().setVisible(true);
-    }//GEN-LAST:event_gakuyo_menuMouseClicked
 
     private void house_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_house_menuActionPerformed
         // TODO add your handling code here:
@@ -693,11 +642,6 @@ public class MainGakuyo extends javax.swing.JFrame {
         withdrawal_from_land.getObj().setVisible(true);
         
     }//GEN-LAST:event_l_withdrwalsMousePressed
-
-    private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MousePressed
-       withdrawal_from_gzd.getObj().setVisible(true);
-      
-    }//GEN-LAST:event_jMenuItem2MousePressed
 
     private void house_withdrawalsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_house_withdrawalsMousePressed
         withdrawal_from_house.getObj().setVisible(true);
@@ -813,11 +757,9 @@ public class MainGakuyo extends javax.swing.JFrame {
     public static javax.swing.JMenu Credit;
     public static javax.swing.JMenu backoffice_setup;
     private javax.swing.JMenuItem edit_clients;
-    private javax.swing.JMenuItem edit_gzd;
     private javax.swing.JMenuItem edit_housedetails;
     private javax.swing.JMenuItem edit_investorsclub;
     private javax.swing.JMenuItem edit_landdetails;
-    private javax.swing.JMenuItem gakuyo_menu;
     private javax.swing.JMenuItem house_menu;
     private javax.swing.JMenuItem house_withdrawals;
     private javax.swing.JMenuItem inv_clubwithdrwls;
@@ -825,7 +767,6 @@ public class MainGakuyo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

@@ -156,7 +156,7 @@ private static withdrawal_from_land obj=null;
                                     + " "+"Client Signature:"+sg+"\nServed by"+servedby+""+name+"\n\n\t\t\t Where Trust Meets Your Vision",null);
              
                 } catch (IOException | BadLocationException ex) {
-                    Logger.getLogger(GakuyoZeroDeposit.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(withdrawal_from_land.class.getName()).log(Level.SEVERE, null, ex);
                 }
      finally {
     try { rs.close(); } catch (SQLException e) {  }
@@ -991,7 +991,7 @@ return string;
                   
 
                 } catch (SQLException ex) {
-                    Logger.getLogger(GakuyoZeroDeposit.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(withdrawal_from_land.class.getName()).log(Level.SEVERE, null, ex);
                 }
              finally {
     try { rs.close(); } catch (SQLException e) {  }
