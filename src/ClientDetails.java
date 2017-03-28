@@ -169,7 +169,7 @@ public class ClientDetails extends javax.swing.JFrame {
 
         title.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr.", "Mrs", "Ms", "Sir" }));
 
-        Combo_property.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Land", "House", "GZD" }));
+        Combo_property.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Land", "House" }));
         Combo_property.setToolTipText("");
         Combo_property.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

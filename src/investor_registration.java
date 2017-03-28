@@ -2,7 +2,6 @@
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -34,9 +33,7 @@ public class investor_registration extends javax.swing.JFrame {
        Date date = new Date();
        String td=dF.format(date);
       
-                //autogen receipt  no
-    int rno = (int) Math.floor((Math.random() * 1000000) + 1)+(int) Math.floor((Math.random() * 100000)+1);
-            String receipt_no = "INVCR"+rno;
+    
                 
     private investor_registration() {
         initComponents();
@@ -198,62 +195,7 @@ string = string.substring(1);
 return string;
 }
     
-public void receipt(){
-   if(conn==null){
-            JOptionPane.showMessageDialog(this, "Could not connect to the server");
-        } 
-         else{
-      try {
-                  String ReceiptNo = String.valueOf(receipt_no);
-                    
-                    int r = Integer.parseInt(regfee.getText().replaceAll(",",""));
-                    int l = Integer.parseInt(legalfee.getText().replaceAll(",",""));
-                    int n = r+l;
-                    String Englishword = EnglishNumber(n);
-                    String amntw = " " + Englishword+ " "+"Kenya Shillings Only";
-                    
-                   String searchuser = "select *from [user] where password=?";
-                   pst=conn.prepareStatement(searchuser);
-                   pst.setString(1, md5(pwd.getText().trim()));
-                   rs = pst.executeQuery();
-                    rs.next();
-                     String branch=rs.getString("branch");
-                     String fname =rs.getString("fname"); 
-                     String lname =rs.getString("lname"); 
-                     String uname = fname+" "+lname;
-                
-                    String nme=name.getText();
-                    String lfee=legalfee.getText();
-                    String rfee=regfee.getText();
-                    String Payment_mode=payment_mode.getSelectedItem().toString();
-                    String Amountw=String.valueOf(amntw);
-                    String sg = "...........";
-                    String Deposited="............";
-                    String servedby=" ";
-                    String ptype = "registration";
-                    String ttl="\tGAKUYO INVESTORS CLUB REGISTRATION ";
-                    
-                  
-                    Font font = new Font("Tahoma", Font.PLAIN, 12);
-                    jtp.setFont(font);
-                    jtp.setPage(getClass().getResource("logo.html"));
-                     
-                    jtp.getStyledDocument().insertString(1, ttl+ "\nBranch"+" "+branch+" . "+ " "+"Date Of Posting"+" "+td+
-                            " . "+ " "+"Transaction Date"+"  "+td+" ."+" "+"\nClient Name\t\t\t\t"+nme+"\nReceiptNo\t\t\t\t"+
-                            ReceiptNo+"\nRegistration fee\t\t\t"
-                            +rfee+"\nLegal fee\t\t\t\t"+lfee+"\nMode Of Payment\t\t\t"+Payment_mode+"\nPayment Type\t\t\t"+ptype+
-                            "\nAmount in Words:"+Amountw+"\nDepositedBy:"+Deposited+""
-                            + "Client Signature:"+sg+"Served by"+servedby+""+uname+"\n\t\t Where Trust Meets Your Vision",null);
-                    
-              
-                } catch (IOException ex) {
-                    
-                } catch (BadLocationException | SQLException ex) {
-            Logger.getLogger(investor_registration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-     
-                 }    
-    }
+
      
      
      private String md5(String c) 
@@ -877,18 +819,15 @@ public void receipt(){
        else if(pwd.getText().isEmpty()){
                JOptionPane.showMessageDialog(null,"Kindly Input Your Password ");
                   }
-   if(conn==null){
+       else if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
-        } 
-         else{
+            } 
        
-        if(idp.getSelectedItem()=="ID"){
-            if(invid.getText().length()!=8){
+       else if(idp.getSelectedItem()=="ID" &&invid.getText().length()!=8){
             JOptionPane.showMessageDialog(null, "ID must be 8 digits");
             }
             else{
-                
-            if (!pwd.getText().isEmpty()){
+           
            try{
                      //check whether client exist
             String searchcl = "SELECT COUNT(*) AS total FROM [investors] where id =?";
@@ -898,7 +837,7 @@ public void receipt(){
             while(rs.next()){
              if(rs.getInt("total")<1){
                  
-            try{ 
+            
              // check for user
            String searchuser = "select *from [user] where password=?";
             pst=conn.prepareStatement(searchuser);
@@ -910,7 +849,7 @@ public void receipt(){
                      String fname =rs.getString("fname"); 
                      String lname =rs.getString("lname"); 
                      String uname = fname+" "+lname;
-             try{
+             
                  //check for reference number
             String searchrefno = "SELECT COUNT(*) AS total FROM [investors] where refno =?";
             pst=conn.prepareStatement(searchrefno);
@@ -920,226 +859,128 @@ public void receipt(){
             while(rs.next()){
                    
              if(rs.getInt("total")<1){
-            // do inserts here
-        try {
-               String addinv = "insert into investors(title,name,phone,acc_no,krapin,bname,regfee,legalfee,pmode,refno,nxtkin,kinid,pdate,id,servedby,bank_branch)"
-                    + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                  
-                                 pst = conn.prepareStatement(addinv);
-                            pst.setString(1, title.getSelectedItem().toString());                               
-                            pst.setString(2, name.getText().toUpperCase().trim());
-                            pst.setString(3, phoneNo.getText().toUpperCase().trim());
-                            pst.setString(4, bkacc.getText().toUpperCase().trim());
-                            pst.setString(5, kra_pin.getText().toUpperCase().trim());
-                            pst.setString(6, bkname.getText().toUpperCase().trim());
-                            pst.setString(7, regfee.getText().toUpperCase().trim().replaceAll(",",""));
-                            pst.setString(8, legalfee.getText().toUpperCase().trim().replaceAll(",",""));
-                            pst.setString(9, payment_mode.getSelectedItem().toString()); 
-                            pst.setString(10, reference_no.getText().toUpperCase().trim());
-                            pst.setString(11, nxtname.getText().toUpperCase().trim());
-                            pst.setString(12, idk.getText().toUpperCase().trim());
-                            pst.setString(13, td);
-                            pst.setString(14, invid.getText().toUpperCase().trim());
-                            pst.setString(15, uname);
-                            pst.setString(16,bank_branch.getText().toUpperCase().trim());
-                            pst.execute();
-                            
-                            
-                    int r = Integer.parseInt(regfee.getText().replaceAll(",",""));
-                    int l = Integer.parseInt(legalfee.getText().replaceAll(",",""));
-                    int n = r+l;
-                    String ptype = "registration";
-                    
-                  
-                
-               String gakuyo_zero_deposit = "insert into receipt(cname,pdate,tdate,pmode,amount,receiptno,servedby,ptype,client_id,branch)"
-                        + "values(?,?,?,?,?,?,?,?,?,?)";
-                     
-                    pst = conn.prepareStatement(gakuyo_zero_deposit);
-                    
-                    pst.setString(1,name.getText().trim());
-                    pst.setString(2, td);
-                   
-                    pst.setString(3, td);
-                    
-                    pst.setString(4, payment_mode.getSelectedItem().toString());
-                   
-                    pst.setString(5, String.valueOf(n));
-                   
-                    pst.setString(6, String.valueOf(receipt_no));
-                    pst.setString(7,uname);
-                    pst.setString(8, ptype);
-                    pst.setString(9,invid.getText().trim());
-                    pst.setString(10, branch);
-                    pst.execute();
-                          
-                       receipt();
-                       JOptionPane.showMessageDialog(null, "Saved");       
-             
-               } catch (SQLException ex) {
-                   Logger.getLogger(Investors_club.class.getName()).log(Level.SEVERE, null, ex);
-               }   
             
-            }
-            else {
-                 JOptionPane.showMessageDialog(null, "<html><h4><font color='red'>The reference number already exist!</font></h4></html>");
-             }
-            }
-             }
-            
-             catch (SQLException ex) {
-                      Logger.getLogger(investor_registration.class.getName()).log(Level.SEVERE, null, ex);
-                  }
-             }
-               
-            else{
-             JOptionPane.showMessageDialog(null, "Incorrect  password");}    
-            
-                }
-            catch (SQLException ex) {
-                      Logger.getLogger(investor_registration.class.getName()).log(Level.SEVERE, null, ex);
-                  }
-           
-           }
-             else {
-             JOptionPane.showMessageDialog(null, name.getText().trim()+ " " + "already exist!");
-             }
-            }}
-                catch (SQLException ex) {
-                      Logger.getLogger(investor_registration.class.getName()).log(Level.SEVERE, null, ex);
-                  }
-               
-               
-               
-               }
-            }
-        }
-        else{
-           
-               if (!pwd.getText().isEmpty()){
-           try{
-                     //check whether client exist
-            String searchcl = "SELECT COUNT(*) AS total FROM [investors] where id =?";
-            pst=conn.prepareStatement(searchcl);
-            pst.setString(1,  invid.getText().trim());
-            rs = pst.executeQuery();
-            while(rs.next()){
-             if(rs.getInt("total")<1){
-                 
-            try{ 
-             // check for user
-           String searchuser = "select *from [user] where password=?";
-            pst=conn.prepareStatement(searchuser);
-            pst.setString(1, md5(pwd.getText().trim()));
-            rs = pst.executeQuery();
-            
-            if(rs.next()){
-                     String branch=rs.getString("branch");
-                     String fname =rs.getString("fname"); 
-                     String lname =rs.getString("lname"); 
-                     String uname = fname+" "+lname;
-             try{
-                 //check for reference number
-            String searchrefno = "SELECT COUNT(*) AS total FROM [investors] where refno =?";
-            pst=conn.prepareStatement(searchrefno);
-            pst.setString(1,  reference_no.getText().trim());
-            rs = pst.executeQuery();
-           
-            while(rs.next()){
-                   
-             if(rs.getInt("total")<1){
-            // do inserts here
-        try {
-               String addinv = "insert into investors(title,name,phone,acc_no,krapin,bname,regfee,legalfee,pmode,refno,nxtkin,kinid,pdate,id,servedby,bank_branch)"
-                    + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                  
-                                 pst = conn.prepareStatement(addinv);
-                            pst.setString(1, title.getSelectedItem().toString());                               
-                            pst.setString(2, name.getText().toUpperCase().trim());
-                            pst.setString(3, phoneNo.getText().toUpperCase().trim());
-                            pst.setString(4, bkacc.getText().toUpperCase().trim());
-                            pst.setString(5, kra_pin.getText().toUpperCase().trim());
-                            pst.setString(6, bkname.getText().toUpperCase().trim());
-                            pst.setString(7, regfee.getText().toUpperCase().trim().replaceAll(",",""));
-                            pst.setString(8, legalfee.getText().toUpperCase().trim().replaceAll(",",""));
-                            pst.setString(9, payment_mode.getSelectedItem().toString()); 
-                            pst.setString(10, reference_no.getText().toUpperCase().trim());
-                            pst.setString(11, nxtname.getText().toUpperCase().trim());
-                            pst.setString(12, idk.getText().toUpperCase().trim());
-                            pst.setString(13, td);
-                            pst.setString(14, invid.getText().toUpperCase().trim());
-                            pst.setString(15, uname);
-                            pst.setString(16,bank_branch.getText().toUpperCase().trim());
-                            pst.execute();
-                            
-                            
-                    int r = Integer.parseInt(regfee.getText().replaceAll(",",""));
-                    int l = Integer.parseInt(legalfee.getText().replaceAll(",",""));
-                    int n = r+l;
-                    String ptype = "registration";
-                    
-                  
-                
-               String gakuyo_zero_deposit = "insert into receipt(cname,pdate,tdate,pmode,amount,receiptno,servedby,ptype,client_id,branch)"
-                        + "values(?,?,?,?,?,?,?,?,?,?)";
-                     
-                    pst = conn.prepareStatement(gakuyo_zero_deposit);
-                    
-                    pst.setString(1,name.getText().trim());
-                    pst.setString(2, td);
-                   
-                    pst.setString(3, td);
-                    
-                    pst.setString(4, payment_mode.getSelectedItem().toString());
-                   
-                    pst.setString(5, String.valueOf(n));
-                   
-                    pst.setString(6, String.valueOf(receipt_no));
-                    pst.setString(7,uname);
-                    pst.setString(8, ptype);
-                    pst.setString(9,invid.getText().trim());
-                    pst.setString(10, branch);
-                    pst.execute();
-                          
-                       receipt();
-                       JOptionPane.showMessageDialog(null, "Saved");       
-             
-               } catch (SQLException ex) {
-                   Logger.getLogger(Investors_club.class.getName()).log(Level.SEVERE, null, ex);
-               }   
-            
-            }
-            else {
-                 JOptionPane.showMessageDialog(null, "<html><h4><font color='red'>The reference number already exist!</font></h4></html>");
-             }
-            }
-             }
-            
-             catch (SQLException ex) {
-                      Logger.getLogger(investor_registration.class.getName()).log(Level.SEVERE, null, ex);
-                  }
-             }
-               
-            else{
-             JOptionPane.showMessageDialog(null, "Incorrect  password");}    
-            
-                }
-            catch (SQLException ex) {
-                      Logger.getLogger(investor_registration.class.getName()).log(Level.SEVERE, null, ex);
-                  }
-  
-           }
-             else {
-             JOptionPane.showMessageDialog(null, name.getText().trim()+ " " + "already exist!");
-             }
-            }}
-                catch (SQLException ex) {
-                      Logger.getLogger(investor_registration.class.getName()).log(Level.SEVERE, null, ex);
-                  }
-              }
+                 //check receipt no
+         String checkrn ="SELECT TOP 1 rno FROM receipt ORDER BY rno DESC";
+         pst = conn.prepareStatement(checkrn);
+         rs =pst.executeQuery();
+       
+         while(rs.next()){
+          int b = Integer.parseInt(rs.getString(1));
+          int nr =(b+1);
+         
+           String receiptno = "GINVC"+nr; 
         
-        }
-   }
+               String addinv = "insert into investors(title,name,phone,acc_no,krapin,bname,regfee,legalfee,pmode,refno,nxtkin,kinid,pdate,id,servedby,bank_branch)"
+                    + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                  
+                                 pst = conn.prepareStatement(addinv);
+                            pst.setString(1, title.getSelectedItem().toString());                               
+                            pst.setString(2, name.getText().toUpperCase().trim());
+                            pst.setString(3, phoneNo.getText().toUpperCase().trim());
+                            pst.setString(4, bkacc.getText().toUpperCase().trim());
+                            pst.setString(5, kra_pin.getText().toUpperCase().trim());
+                            pst.setString(6, bkname.getText().toUpperCase().trim());
+                            pst.setString(7, regfee.getText().toUpperCase().trim().replaceAll(",",""));
+                            pst.setString(8, legalfee.getText().toUpperCase().trim().replaceAll(",",""));
+                            pst.setString(9, payment_mode.getSelectedItem().toString()); 
+                            pst.setString(10, reference_no.getText().toUpperCase().trim());
+                            pst.setString(11, nxtname.getText().toUpperCase().trim());
+                            pst.setString(12, idk.getText().toUpperCase().trim());
+                            pst.setString(13, td);
+                            pst.setString(14, invid.getText().toUpperCase().trim());
+                            pst.setString(15, uname);
+                            pst.setString(16,bank_branch.getText().toUpperCase().trim());
+                            pst.execute();
+                            
+                            
+                    int r = Integer.parseInt(regfee.getText().replaceAll(",",""));
+                    int l = Integer.parseInt(legalfee.getText().replaceAll(",",""));
+                    int n = r+l;
+                    
+                  //display receipt
+                    String Englishword = EnglishNumber(n);
+                    String amntw = " " + Englishword+ " "+"Kenya Shillings Only";
+                    String nme=name.getText();
+                    String lfee=legalfee.getText();
+                    String rfee=regfee.getText();
+                    String Payment_mode=payment_mode.getSelectedItem().toString();
+                    String Amountw=String.valueOf(amntw);
+                    String sg = "...........";
+                    String Deposited="............";
+                    String servedby=" ";
+                    String ptype = "registration";
+                    String ttl="\tGAKUYO INVESTORS CLUB REGISTRATION ";
+                    
+                  
+                    Font font = new Font("Tahoma", Font.PLAIN, 12);
+                    jtp.setFont(font);
+                    jtp.setPage(getClass().getResource("logo.html"));
+                     
+                    jtp.getStyledDocument().insertString(1, ttl+ "\nBranch"+" "+branch+" . "+ " "+"Date Of Posting"+" "+td+
+                            " . "+ " "+"Transaction Date"+"  "+td+" ."+" "+"\nClient Name\t\t\t\t"+nme+"\nReceiptNo\t\t\t\t"+
+                            receiptno+"\nRegistration fee\t\t\t"
+                            +rfee+"\nLegal fee\t\t\t\t"+lfee+"\nMode Of Payment\t\t\t"+Payment_mode+"\nPayment Type\t\t\t"+ptype+
+                            "\nAmount in Words:"+Amountw+"\nDepositedBy:"+Deposited+""
+                            + "Client Signature:"+sg+"Served by"+servedby+""+uname+"\n\t\t Where Trust Meets Your Vision",null);
+                  
+                  
+                
+               String rct = "insert into receipt(cname,pdate,tdate,pmode,amount,receiptno,servedby,ptype,client_id,branch,rno)"
+                        + "values(?,?,?,?,?,?,?,?,?,?,?)";
+                     
+                    pst = conn.prepareStatement(rct);
+                    
+                    pst.setString(1,name.getText().trim());
+                    pst.setString(2, td);
+                    pst.setString(3, td);
+                    pst.setString(4, payment_mode.getSelectedItem().toString());
+                    pst.setString(5, String.valueOf(n));
+                    pst.setString(6, String.valueOf(receiptno));
+                    pst.setString(7,uname);
+                    pst.setString(8, ptype);
+                    pst.setString(9,invid.getText().trim());
+                    pst.setString(10, branch);
+                    pst.setString(11, String.valueOf(nr));
+
+                    pst.execute();
+                          
+                       JOptionPane.showMessageDialog(null, "Saved");       
+                //clear
+                name.setText("");
+                phoneNo.setText("");
+                invid.setText("");
+                bkacc.setText("");
+                kra_pin.setText("");
+                bank_branch.setText("");
+                legalfee.setText("");
+                regfee.setText("");
+                reference_no.setText("");
+                nxtname.setText("");
+                idk.setText("");
+                pwd.setText("");
+            }}
+            else {
+                 JOptionPane.showMessageDialog(null, "<html><h4><font color='red'>The reference number already exist!</font></h4></html>");
+             }
+            }
+             }
+               
+            else{
+             JOptionPane.showMessageDialog(null, "Incorrect  password");}    
+           }
+             else {
+             JOptionPane.showMessageDialog(null, name.getText().trim()+ " " + "already exist!");
+             }
+            }}
+                catch (SQLException | IOException | BadLocationException ex) {
+                      Logger.getLogger(investor_registration.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+               
+            }
+        
+    
+   
     }//GEN-LAST:event_saveActionPerformed
 
     private void payment_modeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payment_modeActionPerformed
