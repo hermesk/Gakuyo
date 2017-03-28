@@ -382,7 +382,7 @@ public class investors_payments extends javax.swing.JFrame {
                             rs = pst.executeQuery();
                           while(rs.next()){
             if(rs.getInt("total")>0){
-               InputStream ljp = getClass().getResourceAsStream("investors.jrxml");
+               InputStream ljp = getClass().getResourceAsStream("investor statement.jrxml");
                 JasperDesign jd = JRXmlLoader.load(ljp);
                 
 
