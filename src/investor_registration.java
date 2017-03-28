@@ -914,7 +914,6 @@ return string;
                     String ptype = "registration";
                     String ttl="\tGAKUYO INVESTORS CLUB REGISTRATION ";
                     
-                  
                     Font font = new Font("Tahoma", Font.PLAIN, 12);
                     jtp.setFont(font);
                     jtp.setPage(getClass().getResource("logo.html"));
