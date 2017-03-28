@@ -691,14 +691,10 @@ return string;
         else if(pwd.getText().isEmpty()){
                JOptionPane.showMessageDialog(null,"Kindly Input Your Password ");
                   }
-        else{  
-          conn = DbConnect.connecrDb();
-       if(conn==null){
+        else  if(conn==null){
             JOptionPane.showMessageDialog(null, "Could not connect to the server");
         }
        else{
-            
-               if (!pwd.getText().isEmpty()){
                
     try{
                      //check whether client exist
@@ -837,21 +833,11 @@ return string;
              JOptionPane.showMessageDialog(null, "<html><h4><font color='red'>Client with ID " +invid.getText().trim()+ " does not exist! Please register the client</font></h4></html>");
              }
             }}
-                catch (SQLException ex) {
+                catch (SQLException | IOException | BadLocationException ex) {
                       Logger.getLogger(Investors_club.class.getName()).log(Level.SEVERE, null, ex);
-                  } catch (IOException ex) {
-                       Logger.getLogger(Investors_club.class.getName()).log(Level.SEVERE, null, ex);
-                   } catch (BadLocationException ex) {
-                       Logger.getLogger(Investors_club.class.getName()).log(Level.SEVERE, null, ex);
-                   }
-                               finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
-               }
+                  }
              }
-        } 
+        
         
     }//GEN-LAST:event_cmd_saveActionPerformed
 
