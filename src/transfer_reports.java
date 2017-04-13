@@ -95,26 +95,7 @@ public double getSum(){
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    DefaultTableModel model = (DefaultTableModel) transfer_table.getModel();
-                    model.setRowCount(0);
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("PROPERTY TRANSFER REPORTS");
         setName("Transfers_Reports"); // NOI18N
         setResizable(false);
@@ -299,7 +280,6 @@ public double getSum(){
                     JOptionPane.showMessageDialog(null, "<html><font color='red'>Fill end date</font></html>");
                  }
        else{
-       conn = DbConnect.connecrDb();
        if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -373,11 +353,7 @@ public double getSum(){
            catch(SQLException e){
         JOptionPane.showMessageDialog(null, e);
     }   
-        finally {
-    try { rs.close(); } catch (SQLException e) { JOptionPane.showMessageDialog(null, e); }
-    try { pst.close(); } catch (SQLException e) {JOptionPane.showMessageDialog(null, e); }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+      
       
          } 
        }

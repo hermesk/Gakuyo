@@ -103,15 +103,10 @@ private static withdrawal_from_land obj=null;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+     
       }
     }
     public void dreceipt() throws SQLException{
-        conn = DbConnect.connecrDb();
      if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }    
@@ -158,11 +153,7 @@ private static withdrawal_from_land obj=null;
                 } catch (IOException | BadLocationException ex) {
                     Logger.getLogger(withdrawal_from_land.class.getName()).log(Level.SEVERE, null, ex);
                 }
-     finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+   
      }
 } 
               private static final String[] ones =
@@ -270,7 +261,6 @@ return string;
 
        }
       private void ProperyDetails() {
-        conn = DbConnect.connecrDb();
           if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -289,11 +279,7 @@ return string;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
-          finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+          
           }
     }
      public void close(){
@@ -301,7 +287,6 @@ return string;
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
          }
         private void displayptno() {
-       conn = DbConnect.connecrDb();
       if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -336,11 +321,7 @@ return string;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
-      finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+      
       }
     }
     @SuppressWarnings("unchecked")
@@ -383,24 +364,7 @@ return string;
         jLabel9 = new javax.swing.JLabel();
         idsearch = new javax.swing.JButton();
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Land Refunds");
 
         jScrollPane1.setViewportView(jtp);
@@ -760,7 +724,6 @@ return string;
     }//GEN-LAST:event_penalty_charge_rateKeyReleased
 
     private void save_withdrawal_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_withdrawal_amountActionPerformed
-         conn = DbConnect.connecrDb();
         if (id.getText().isEmpty() || withdrawal_amount.getText().isEmpty()||pc.getText().isEmpty()||initial_amount.getText().isEmpty()||penalty_charge_rate.getText().isEmpty()
                ||penalty_charge_fee.getText().isEmpty()||amount_received.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "<html><h2><font color='red'>Kindly Fill all the required fields Correctly!</font></h2></html>");}
@@ -867,7 +830,7 @@ return string;
                     JOptionPane.showMessageDialog(null, "Saved");
                 } 
                 catch (SQLException ex) {
-                    Logger.getLogger(withdrawal_from_gzd.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(withdrawal_from_land.class.getName()).log(Level.SEVERE, null, ex);
                 }
         
                 }
@@ -879,11 +842,7 @@ return string;
 }                   catch (SQLException ex) {
                         Logger.getLogger(withdrawal_from_land.class.getName()).log(Level.SEVERE, null, ex);
                     }
- finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+ 
         }   
        }
     }//GEN-LAST:event_save_withdrawal_amountActionPerformed
@@ -953,7 +912,6 @@ return string;
     }//GEN-LAST:event_SearchActionPerformed
 
     public void savrct(){
-        conn = DbConnect.connecrDb();
     if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -993,11 +951,7 @@ return string;
                 } catch (SQLException ex) {
                     Logger.getLogger(withdrawal_from_land.class.getName()).log(Level.SEVERE, null, ex);
                 }
-             finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+         
         }
     }
     private void print_receiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_receiptActionPerformed

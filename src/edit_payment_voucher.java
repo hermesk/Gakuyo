@@ -47,14 +47,7 @@ public class edit_payment_voucher extends javax.swing.JFrame {
     private void logo(){
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("images/LOG.png")));
     }
-    public void close() {
-        String ObjButtons[] = {"Yes", "No"};
-        int PromptResult = JOptionPane.showOptionDialog(null, "Are you sure you want to exit the system?", "Confirm", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, ObjButtons, ObjButtons[1]);
-        if (PromptResult == JOptionPane.YES_OPTION) {
-            System.exit(0);
-
-        }
-    }
+  
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -84,24 +77,7 @@ public class edit_payment_voucher extends javax.swing.JFrame {
         pwd = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "EDIT PAYMENT VOUCHER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
@@ -333,7 +309,6 @@ public class edit_payment_voucher extends javax.swing.JFrame {
                   }
          
         else {
-            conn = DbConnect.connecrDb();
              if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }  
@@ -355,11 +330,7 @@ public class edit_payment_voucher extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(edit_payment_voucher.class.getName()).log(Level.SEVERE, null, ex);
             }
- finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+
         }}
        
     }//GEN-LAST:event_update_payment_voucherActionPerformed
@@ -372,7 +343,6 @@ public class edit_payment_voucher extends javax.swing.JFrame {
         } 
      
         else {
-             conn = DbConnect.connecrDb();
                  if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }  
@@ -393,11 +363,7 @@ public class edit_payment_voucher extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(edit_investors_club.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+  
             }
         }}
        
@@ -427,7 +393,6 @@ public class edit_payment_voucher extends javax.swing.JFrame {
         }
          
           else{
-             conn = DbConnect.connecrDb();
                   if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -457,11 +422,9 @@ public class edit_payment_voucher extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Client with This Receipt No"+" "+spvrec.getText()+" "+"does not exist");
                 }
             
-            } catch (SQLException ex) {
+            } catch ( SQLException | ParseException ex) {
                  Logger.getLogger(edit_payment_voucher.class.getName()).log(Level.SEVERE, null, ex);
-             } catch (ParseException ex) {
-                Logger.getLogger(edit_payment_voucher.class.getName()).log(Level.SEVERE, null, ex);
-            }
+             }
                   }
          }
 

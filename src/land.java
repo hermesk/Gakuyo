@@ -347,24 +347,7 @@ int nextVal = seq.incrementAndGet();
 
         jTextField1.setText("jTextField1");
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("LAND PAYMENT SECTION");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -65,7 +65,6 @@ public class Investors_club extends javax.swing.JFrame  {
     }
      
      private void display() {
-         conn = DbConnect.connecrDb();
          if(conn==null){
             JOptionPane.showMessageDialog(null, "Could not connect to the server");
         }
@@ -95,11 +94,7 @@ public class Investors_club extends javax.swing.JFrame  {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
-                                    finally {
-    try { rs.close(); } catch (SQLException e) {JOptionPane.showMessageDialog(null, e);   }
-    try { pst.close(); } catch (SQLException e) { JOptionPane.showMessageDialog(null, e); }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {JOptionPane.showMessageDialog(null, e); }
-}
+                                   
           }
     }
    public void close(){
@@ -107,7 +102,6 @@ public class Investors_club extends javax.swing.JFrame  {
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
          }
       private void ComboPmode(){
-          conn = DbConnect.connecrDb();
           if(conn==null){
             JOptionPane.showMessageDialog(null, "Could not connect to the server");
         } 
@@ -127,11 +121,7 @@ public class Investors_club extends javax.swing.JFrame  {
      {
                  JOptionPane.showMessageDialog(null, e);
     }
-                                      finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+  
           }
           }
       private String md5(String c) 
@@ -298,24 +288,6 @@ return string;
             .addGap(0, 304, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
         setTitle("Investors Club");
 
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -968,7 +940,6 @@ return string;
     private void payment_modeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_payment_modeFocusLost
         if("Cash".equals(payment_mode.getSelectedItem().toString())||"Transfer".equals(payment_mode.getSelectedItem().toString())||
             "Standing order".equals(payment_mode.getSelectedItem().toString())||"Defaced Agent Slip".equals(payment_mode.getSelectedItem().toString())){
-         conn = DbConnect.connecrDb();
         if(conn==null){
             JOptionPane.showMessageDialog(null, "Could not connect to the server");
         }

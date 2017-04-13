@@ -108,14 +108,6 @@ public class ClientDetails extends javax.swing.JFrame {
             { 
 
                 dispose();
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
 
             }
         });

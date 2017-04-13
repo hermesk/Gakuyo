@@ -64,7 +64,7 @@ WHERE
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="28">
+			<band height="39">
 				<staticText>
 					<reportElement x="46" y="6" width="51" height="20" uuid="90245c57-2128-40cd-a7e0-0dc5ad3ca919"/>
 					<textElement>
@@ -72,7 +72,7 @@ WHERE
 					</textElement>
 					<text><![CDATA[Total]]></text>
 				</staticText>
-				<textField pattern="##,##,##,##,##,##,##0.00" isBlankWhenNull="true">
+				<textField pattern="#,##0" isBlankWhenNull="true">
 					<reportElement x="132" y="6" width="66" height="20" uuid="03009e24-678f-4263-92ec-ee366db5be0a"/>
 					<textElement>
 						<font size="12" isBold="true"/>
@@ -101,8 +101,8 @@ WHERE
 				<text><![CDATA[LAND REPORT]]></text>
 			</staticText>
 			<image>
-				<reportElement x="128" y="13" width="485" height="84" uuid="83b9024f-5c57-4db3-b91c-27a32bda37d2"/>
-				<imageExpression><![CDATA["\\\\IT\\Users\\Hp\\Documents\\NetBeansProjects\\Gakuyo\\src\\images\\coffee.jpg"]]></imageExpression>
+				<reportElement x="66" y="11" width="672" height="103" uuid="b8c98dfb-189f-4c10-8273-7bf7295d86c2"/>
+				<imageExpression><![CDATA["C:\\Users\\Hp\\Documents\\NetBeansProjects\\Gakuyo\\src\\images\\coffee.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -134,7 +134,7 @@ WHERE
 				<text><![CDATA[Cost]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="264" y="0" width="66" height="15" forecolor="#000000" uuid="6975cdf6-dd34-48a4-a28b-f9ba12b87178"/>
+				<reportElement style="Column header" x="276" y="1" width="48" height="15" forecolor="#000000" uuid="6975cdf6-dd34-48a4-a28b-f9ba12b87178"/>
 				<text><![CDATA[Size]]></text>
 			</staticText>
 			<staticText>
@@ -176,19 +176,19 @@ WHERE
 					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="66" y="0" width="66" height="15" uuid="49f8e295-d7f7-4eec-9e86-ff00ee8df98c"/>
+					<reportElement style="Detail" x="66" y="0" width="54" height="15" uuid="49f8e295-d7f7-4eec-9e86-ff00ee8df98c"/>
 					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" pattern="#,##0">
 					<reportElement style="Detail" x="132" y="0" width="66" height="15" uuid="495dab24-9032-48aa-bb37-0914434aae13"/>
 					<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="198" y="0" width="66" height="15" uuid="64c3dbf0-821c-4ee9-8ee9-c129540e751e"/>
+				<textField isStretchWithOverflow="true" pattern="#,##0">
+					<reportElement style="Detail" x="209" y="0" width="67" height="15" uuid="64c3dbf0-821c-4ee9-8ee9-c129540e751e"/>
 					<textFieldExpression><![CDATA[$F{cost}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="264" y="0" width="66" height="15" uuid="401f9d78-df8f-47a5-85f2-64f556512687"/>
+					<reportElement style="Detail" x="276" y="0" width="54" height="15" uuid="401f9d78-df8f-47a5-85f2-64f556512687"/>
 					<textFieldExpression><![CDATA[$F{size}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
@@ -204,33 +204,33 @@ WHERE
 					<textFieldExpression><![CDATA[$F{debitacc}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="542" y="0" width="52" height="15" uuid="6a237afb-6ed6-4fb1-b8a7-537dd40f7595"/>
+					<reportElement style="Detail" x="561" y="0" width="52" height="15" uuid="6a237afb-6ed6-4fb1-b8a7-537dd40f7595"/>
 					<textFieldExpression><![CDATA[$F{PType}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="613" y="0" width="47" height="15" uuid="00a3378c-5f7f-4a19-b934-94acb93e2a3e"/>
 					<textFieldExpression><![CDATA[$F{PlotNo}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" pattern="#,##0">
 					<reportElement style="Detail" x="660" y="0" width="66" height="15" uuid="9e3496c8-a1de-4492-8ee3-d3cc7d773403"/>
 					<textFieldExpression><![CDATA[$F{balance}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="726" y="0" width="66" height="15" uuid="5507d4ef-29c3-4adc-b6ee-c3389e313afa"/>
+					<reportElement style="Detail" x="738" y="0" width="64" height="15" uuid="5507d4ef-29c3-4adc-b6ee-c3389e313afa"/>
 					<textFieldExpression><![CDATA[$F{servedby}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="33" splitType="Stretch">
+		<band height="26" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="a2691d5f-d3e1-4546-9f68-190d30d96f7f"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
-			<textField pattern="##,##,##,##,##,##,##0.00" isBlankWhenNull="true">
+			<textField pattern="#,##0" isBlankWhenNull="true">
 				<reportElement x="135" y="3" width="63" height="20" uuid="1b5955c6-0e75-46b0-8e9e-9a916e901d07"/>
 				<textElement>
 					<font size="12" isBold="true" isUnderline="true"/>

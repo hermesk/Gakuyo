@@ -49,31 +49,40 @@ house.id=client_detail.id]]>
 	<group name="PDate">
 		<groupExpression><![CDATA[$F{PDate}]]></groupExpression>
 		<groupHeader>
-			<band height="37">
+			<band height="29">
 				<textField pattern="dd/MM/yyyy">
-					<reportElement style="SubTitle" x="7" y="9" width="68" height="24" forecolor="#000000" uuid="ac318cf2-1f08-4950-b17a-652692bd56a6"/>
+					<reportElement style="SubTitle" x="7" y="8" width="68" height="19" forecolor="#000000" uuid="ac318cf2-1f08-4950-b17a-652692bd56a6"/>
 					<textElement>
 						<font size="12" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{PDate}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="SubTitle" x="496" y="13" width="297" height="20" forecolor="#000000" uuid="f023f954-058e-49eb-aa55-3b85be7d2ab5"/>
+					<reportElement style="SubTitle" x="496" y="8" width="297" height="20" forecolor="#000000" uuid="f023f954-058e-49eb-aa55-3b85be7d2ab5"/>
 					<textElement>
-						<font size="16" isBold="true"/>
+						<font size="12" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="378" y="13" width="61" height="15" uuid="b513bfa4-e365-4f16-876b-3b213ca88e84"/>
+					<reportElement style="Detail" x="378" y="8" width="61" height="15" uuid="b513bfa4-e365-4f16-876b-3b213ca88e84"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
 					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="93" y="13" width="134" height="15" uuid="b5910ea5-3874-496f-9292-73dd396d26e3"/>
+					<reportElement style="Detail" x="93" y="8" width="134" height="15" uuid="b5910ea5-3874-496f-9292-73dd396d26e3"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
 					<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="242" y="13" width="117" height="15" uuid="e2013672-3b11-4e92-95d3-23c3d4d56bf4"/>
+					<reportElement style="Detail" x="242" y="8" width="117" height="15" uuid="e2013672-3b11-4e92-95d3-23c3d4d56bf4"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
 					<textFieldExpression><![CDATA[$F{location}]]></textFieldExpression>
 				</textField>
 			</band>
@@ -85,10 +94,10 @@ house.id=client_detail.id]]>
 	<group name="name">
 		<groupExpression><![CDATA[$F{name}]]></groupExpression>
 		<groupHeader>
-			<band height="1"/>
+			<band/>
 		</groupHeader>
 		<groupFooter>
-			<band height="29">
+			<band height="24">
 				<staticText>
 					<reportElement x="144" y="2" width="39" height="20" uuid="d6182d46-7cd9-4748-96a1-c0e3179c1cbb"/>
 					<textElement>
@@ -119,8 +128,8 @@ house.id=client_detail.id]]>
 				<text><![CDATA[GAKUYO HOUSE PAYMENTS]]></text>
 			</staticText>
 			<image>
-				<reportElement x="171" y="20" width="485" height="84" uuid="398401e2-6a99-48a2-b103-6571f0acb25e"/>
-				<imageExpression><![CDATA["\\\\IT\\Users\\Hp\\Documents\\NetBeansProjects\\Gakuyo\\src\\images\\coffee.jpg"]]></imageExpression>
+				<reportElement x="75" y="20" width="596" height="84" uuid="66ec6ef8-c192-4264-a844-f955dcb02efa"/>
+				<imageExpression><![CDATA["C:\\Users\\Hp\\Documents\\NetBeansProjects\\Gakuyo\\src\\images\\coffee.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -217,7 +226,7 @@ house.id=client_detail.id]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="30" splitType="Stretch">
+		<band height="26" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="b2ecc328-b4aa-4922-8538-dded6a55cddd"/>
 				<graphicElement>

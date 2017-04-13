@@ -10,7 +10,7 @@ public class DbConnect {
       
  
        try{
-            String url3 = "jdbc:sqlserver://192.168.0.148:1433;databaseName=gakuyo";
+            String url3 = "jdbc:sqlserver://192.168.0.143:1433;databaseName=gakuyo";
             String user="dab";
             String pass="3306";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

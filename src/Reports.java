@@ -95,24 +95,7 @@ public class Reports extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("PROPERTY PAYMENT REPORTS");
         setBackground(new java.awt.Color(153, 153, 153));
 
@@ -316,10 +299,15 @@ public class Reports extends javax.swing.JFrame {
                 JasperPrint jp = JasperFillManager.fillReport(jr,null, conn);
                 JasperViewer.viewReport(jp,false);
                               
-                              }}
+                              }
+                          else{
+                           JOptionPane.showMessageDialog(null, "No House Record Found in "+" "+location.getSelectedItem()+" ");
+
+                              }
+                          }
               
         } catch (JRException ex) {
-            Logger.getLogger(investors_payments.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
         }        catch (SQLException ex) {
                      Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
                  }

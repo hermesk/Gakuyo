@@ -68,7 +68,6 @@ public class withdrawal_from_house extends javax.swing.JFrame {
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("images/LOG.png")));
     }
     private void ProperyDetails() {
-        conn = DbConnect.connecrDb();
     if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -87,11 +86,7 @@ public class withdrawal_from_house extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
-                                    finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+                                    
     }
     }
         private String md5(String c) 
@@ -112,7 +107,6 @@ public class withdrawal_from_house extends javax.swing.JFrame {
 
        }
           public void dreceipt() throws SQLException{
-       conn = DbConnect.connecrDb();
               if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -156,11 +150,7 @@ public class withdrawal_from_house extends javax.swing.JFrame {
                 } catch (IOException | BadLocationException ex) {
                     Logger.getLogger(withdrawal_from_house.class.getName()).log(Level.SEVERE, null, ex);
                 } 
-                                   finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+                                   
        }
 } 
           private static final String[] ones =
@@ -251,7 +241,6 @@ string = string.substring(1);
 return string;
 }
      private void display() {
-     conn = DbConnect.connecrDb();
          if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -284,11 +273,7 @@ return string;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
-                                     finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+                                     
                  }
     }
    public void close(){
@@ -332,24 +317,7 @@ return string;
         jtp = new javax.swing.JTextPane();
         print_receipt = new javax.swing.JButton();
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("House Refund");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HOUSE REFUND", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -660,7 +628,6 @@ return string;
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
 
-         conn = DbConnect.connecrDb();
         if (id.getText().isEmpty() || amount_withdrawn.getText().isEmpty()||pc.getText().isEmpty()||initial_amount.getText().isEmpty()||penalty_rate.getText().isEmpty()
                ||penalty_fee.getText().isEmpty()||amnt_received.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "<html><h2><font color='red'>Kindly Fill all the required fields Correctly!</font></h2></html>");}
@@ -789,17 +756,12 @@ return string;
         }       catch (SQLException ex) {
                     Logger.getLogger(withdrawal_from_house.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                                       finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+                                       
         }
         }
     }//GEN-LAST:event_saveActionPerformed
 
     public void saverct(){
-        conn = DbConnect.connecrDb();
      if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -836,11 +798,7 @@ return string;
                 } catch (SQLException ex) {
                     Logger.getLogger(withdrawal_from_house.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                                        finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+                                        
              
     }
     }

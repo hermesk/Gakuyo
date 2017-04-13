@@ -75,11 +75,7 @@ public class editland extends javax.swing.JFrame {
      {
                  JOptionPane.showMessageDialog(null, e);
     }
-         finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+         
           }
         private void ProperyDetails(){
             conn = DbConnect.connecrDb();
@@ -110,11 +106,7 @@ public class editland extends javax.swing.JFrame {
      {
                  JOptionPane.showMessageDialog(null, e);
     }
-            finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+            
           }
   
     
@@ -159,24 +151,7 @@ public class editland extends javax.swing.JFrame {
 
         jLabel1.setText("jLabel1");
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("EDIT LAND PAYMENTS");
 
         jLabel2.setText("ID/PASSPORT");
@@ -448,7 +423,6 @@ public class editland extends javax.swing.JFrame {
                   }
     
         else{
-                  conn = DbConnect.connecrDb();
                  if(conn==null){
          JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -506,11 +480,7 @@ public class editland extends javax.swing.JFrame {
                catch(NumberFormatException | SQLException e){
         JOptionPane.showMessageDialog(null, e);
         }
-finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}}
+}
          }
     }//GEN-LAST:event_updateActionPerformed
     private String md5(String c) 
@@ -574,7 +544,6 @@ finally {
         }
       
         else{
-            conn = DbConnect.connecrDb();
                 if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -619,11 +588,7 @@ finally {
                     } catch (ParseException ex) {
                Logger.getLogger(editland.class.getName()).log(Level.SEVERE, null, ex);
            }
-            finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+           
                     search_ref_no.setText("");
                 }
                 }

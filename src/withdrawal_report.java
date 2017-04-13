@@ -170,26 +170,7 @@ public class withdrawal_report extends javax.swing.JFrame {
         withdrawal_tbl = new javax.swing.JTable();
         print = new javax.swing.JButton();
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    DefaultTableModel model = (DefaultTableModel) withdrawal_tbl.getModel();
-                    model.setRowCount(0);
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Withdrawal Reports");
         setResizable(false);
 

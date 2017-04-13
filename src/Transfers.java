@@ -67,7 +67,6 @@ public class Transfers extends javax.swing.JFrame {
     }
   
      private void display() {
-          conn = DbConnect.connecrDb();
         if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }else{
@@ -92,16 +91,11 @@ public class Transfers extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
-               finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+   
         }
 
     }
       private void display1(){
-       conn = DbConnect.connecrDb();
         if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }else{
@@ -128,15 +122,10 @@ public class Transfers extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
-               finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}}
+        }
 
     }
      private void ProperyDetails() {
-              conn = DbConnect.connecrDb();
         if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }else{
@@ -157,11 +146,7 @@ public class Transfers extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
-               finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+  
     }}
          private static final String[] ones =
 {
@@ -254,7 +239,6 @@ return string;
       if(!jtp.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "<html><h4><font color='red'>print current receipt</font></h4></html>");
             }
-     conn = DbConnect.connecrDb();
      if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -301,11 +285,7 @@ return string;
          catch (IOException | BadLocationException | SQLException ex) {
          }
       
-              finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+      
      } 
      }
       private void logo(){
@@ -351,24 +331,7 @@ return string;
         jLabel9 = new javax.swing.JLabel();
         penalty = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TRANSFERS");
         setResizable(false);
 
@@ -660,7 +623,6 @@ return string;
           else if(pwd.getText().isEmpty()){
                JOptionPane.showMessageDialog(null,"Kindly Input Your Password ");
                   } 
-           conn = DbConnect.connecrDb();
         if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -988,11 +950,7 @@ return string;
             catch (SQLException ex) {
                     Logger.getLogger(Transfers.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                             finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+     
             }     
     }//GEN-LAST:event_btnsaveActionPerformed
 public void close(){

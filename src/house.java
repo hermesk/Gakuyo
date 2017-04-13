@@ -440,24 +440,7 @@ return string;
         jScrollPane1 = new javax.swing.JScrollPane();
         jtp = new javax.swing.JTextPane();
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("HOUSE PAYMENT SECTION");
         setFont(new java.awt.Font("Tahoma", 0, 5)); // NOI18N
 

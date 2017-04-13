@@ -175,7 +175,6 @@ string = string.substring(1);
 return string;
 }
 public void dreceipt(){
-    conn = DbConnect.connecrDb();
      if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -221,11 +220,7 @@ public void dreceipt(){
         }
          catch (IOException | BadLocationException | SQLException ex) {
          }
-            finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+            
          JOptionPane.showMessageDialog(null, "Saved");
          
      }           
@@ -255,24 +250,7 @@ public void dreceipt(){
         jtp = new javax.swing.JTextPane();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Payment Voucher");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PAYMENT VOUCHER / EXPENSES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -459,7 +437,6 @@ public void dreceipt(){
                   }
        
         else{
-             conn = DbConnect.connecrDb();
               if(conn==null){
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }
@@ -509,11 +486,7 @@ public void dreceipt(){
             } catch (SQLException ex) {
                 Logger.getLogger(payment_voucher.class.getName()).log(Level.SEVERE, null, ex);
             }
-   finally {
-    try { rs.close(); } catch (SQLException e) {  }
-    try { pst.close(); } catch (SQLException e) { }
-    try { conn.close(); System.out.println("Connection closed");} catch (SQLException e) {}
-}
+  
         }}
             
         }

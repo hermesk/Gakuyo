@@ -68,11 +68,12 @@ public class register extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Could not connect to the server");
         }      
      else{
-             try{
+         try{
          String sql = "select *from property_location";
          pst = conn.prepareStatement(sql);
          rs =pst.executeQuery();
          while(rs.next()){
+             
           String br = rs.getString("branch");         
           branch.addItem(br);
          
@@ -114,24 +115,7 @@ public class register extends javax.swing.JDialog {
         username = new javax.swing.JTextField();
         searchuser = new javax.swing.JButton();
 
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we)
-            { 
-
-                dispose();
-                try {
-                    rs.close();
-                    pst.close();
-                    conn.close();
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null,e);
-                }
-
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add New User");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImages(null);
